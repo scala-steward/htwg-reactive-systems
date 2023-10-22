@@ -6,7 +6,8 @@ import scala.collection.mutable
 import scala.reflect.ClassTag
 import scala.util.Random
 import myPackage.models.Country
-
+import myPackage.utils.getSpreadStreamingProvider
+import scala.collection.mutable.Map
 
 
 case class TabsState(titles: Array[String]) {
@@ -55,16 +56,16 @@ case class App(
     title: String,
     var should_quit: Boolean,
     tabs: TabsState,
-    var show_chart: Boolean,
     countries: Either[Array[Country],String],
+    streamingProviderSpread: Map[String,Int],
     enhanced_graphics: Boolean
 ) {
 
 /*   def on_up(): Unit =
-    this.tasks.previous()
+    this.countries.previous()
 
   def on_down(): Unit =
-    this.tasks.next() */
+    this.countries.next() */
 
   def on_right(): Unit =
     this.tabs.next()
@@ -75,21 +76,28 @@ case class App(
   def on_key(c: Char): Unit =
     c match {
       case 'q' => this.should_quit = true
-      case 't' => this.show_chart = !this.show_chart
       case _   => ()
     }
 
 }
 
 object App {
-  def apply(title: String, enhanced_graphics: Boolean,countries: Either[Array[Country],String]): App = {
+  def apply(title: String, enhanced_graphics: Boolean,countries: Either[Array[Country],String]): myPackage.App = {
     new App(
       title = title,
       countries = countries,
       should_quit = false,
       tabs = TabsState(Array("List of Movies", "Stats")),
-      show_chart = true,
-      enhanced_graphics = enhanced_graphics
+      enhanced_graphics = enhanced_graphics,
+      streamingProviderSpread = {
+        if (countries.isLeft){
+          val countriesLeft = countries.left.get
+          getSpreadStreamingProvider(countriesLeft)
+        }
+        else {
+          Map[String,Int]()
+        }
+      }
     )
   }
 

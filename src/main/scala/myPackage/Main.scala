@@ -7,10 +7,12 @@ import java.time.{Duration, Instant}
 import scala.Ordering.Implicits._
 import models.Country
 import myPackage.utils.getCountries
+import myPackage.utils.getSpreadStreamingProvider
+import myPackage.utils.getStreamingProvider
 
 
 object Scala{
-  def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
+ def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
   // create app and run it
     val tick_rate = Duration.ofMillis(250)
     // getting countries
@@ -22,7 +24,7 @@ object Scala{
 
     run_app(terminal, app, tick_rate, jni)
     }  
-    /* @main def hello: Unit = {
+   /*  @main def hello: Unit = {
         println("Hello world!")
         println("wtf")
      // get countries from api
@@ -30,13 +32,11 @@ object Scala{
         val countries = getCountries();
         if (countries.isLeft){
           println("Success getting countries")
-          val countriesSucess:Array[Country] = countries.left.get
-          countriesSucess.foreach((country) => {
-            println("Name: "+country.name +"\n")
-            println("Code: "+country.code+"\n")
-            println("Services: "+country.services+"\n")
-          })
-       
+          // get streaming providers spread
+          val countriesLeft = countries.left.get
+          val streamingProvider = getStreamingProvider(countriesLeft)
+          val streamingProviderPercentage = getSpreadStreamingProvider(countriesLeft, streamingProvider)     
+          println("Streaming provider percentage: "+streamingProviderPercentage)
         }
         else {
           println("Error getting countries")

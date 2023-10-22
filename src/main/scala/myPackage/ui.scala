@@ -20,13 +20,14 @@ object ui {
     f.renderWidget(tabs, chunks(0))
     app.tabs.index match {
       case 0 => draw_first_tab(f,app, chunks(1))
+      case 1 => draw_second_tab(f,app, chunks(1))
       case _ =>
     }
   }
 
 
   def draw_first_tab(f: Frame,app:App, area: Rect): Unit = {
-    val chunks = Layout(direction = Direction.Horizontal, constraints = Array(Constraint.Ratio(1, 2), Constraint.Ratio(1, 2))).split(area)
+    val chunks = Layout(direction = Direction.Horizontal, constraints = Array(Constraint.Ratio(1, 1))).split(area)
     val items = app.countries match {
       case Left(countries) => {
         countries.map { c =>
@@ -48,26 +49,57 @@ object ui {
       }
     }
 
-    val table = TableWidget(
-      rows = items,
-      header = Some(
-        TableWidget.Row(
-          cells = Array(
-            TableWidget.Cell(Text.nostyle("Name")),
-            TableWidget.Cell(Text.nostyle("Code")),
-            TableWidget.Cell(Text.nostyle("Services"))
-          ),
-          style = Style.DEFAULT.fg(Color.Yellow),
-          bottomMargin = 1
-        )
-      ),
-      block = Some(BlockWidget(title = Some(Spans.nostyle("Countries")), borders = Borders.ALL)),
-      widths = Array(
-        Constraint.Ratio(1, 3),
-        Constraint.Ratio(1, 3),
-        Constraint.Ratio(1, 3)
-      ),
-    )
-    f.renderWidget(table, chunks(0))
-  }
+      val table = TableWidget(
+        rows = items,
+        header = Some(
+          TableWidget.Row(
+            cells = Array(
+              TableWidget.Cell(Text.nostyle("Name")),
+              TableWidget.Cell(Text.nostyle("Code")),
+              TableWidget.Cell(Text.nostyle("Services"))
+            ),
+            style = Style.DEFAULT.fg(Color.Yellow),
+            bottomMargin = 1
+          )
+        ),
+        block = Some(BlockWidget(title = Some(Spans.nostyle("Countries")), borders = Borders.ALL)),
+        widths = Array(
+          Constraint.Ratio(1, 3),
+          Constraint.Ratio(1, 3),
+          Constraint.Ratio(1, 3)
+        ),
+      )
+      f.renderWidget(table, chunks(0))
+    }
+    def draw_second_tab(f: Frame,app:App, area: Rect): Unit = {
+    val chunks = Layout(direction = Direction.Horizontal, constraints = Array(Constraint.Ratio(1, 1))).split(area)
+   
+
+       val table = TableWidget(
+        rows = app.streamingProviderSpread.map { case (provider, spreadPercentage) =>
+          val cells = Array(
+            TableWidget.Cell(Text.nostyle(provider)),
+            TableWidget.Cell(Text.nostyle(spreadPercentage.toString))
+          )
+          TableWidget.Row(cells)
+        }.toArray,
+        header = Some(
+          TableWidget.Row(
+            cells = Array(
+              TableWidget.Cell(Text.nostyle("Streaming Provider")),
+              TableWidget.Cell(Text.nostyle("Percentage")),
+            ),
+            style = Style.DEFAULT.fg(Color.Yellow),
+            bottomMargin = 1
+          )
+        ),
+        block = Some(BlockWidget(title = Some(Spans.nostyle("Countries")), borders = Borders.ALL)),
+        widths = Array(
+          Constraint.Ratio(1, 3),
+          Constraint.Ratio(1, 3),
+          Constraint.Ratio(1, 3)
+        ),
+      )
+      f.renderWidget(table, chunks(0))
+    } 
 }
