@@ -8,6 +8,8 @@ import tui.widgets.ListWidget
 import scala.collection.mutable
 import scala.collection.mutable.Map
 import scala.reflect.ClassTag
+import myPackage.utils.getStreamingProvider
+import myPackage.utils.getPaymentModelsSpreadFromStreamingProvider
 
 case class TabsState(titles: Array[String]):
   var index: Int = 0
@@ -49,6 +51,7 @@ case class App(
     tabs: TabsState,
     countries: Either[Array[Country], String],
     streamingProviderSpread: mutable.Map[String, Int],
+    streamingProviderPaymentModelStread: mutable.Map[String, Int],
     enhanced_graphics: Boolean
 ):
 
@@ -79,10 +82,19 @@ object App:
       title = title,
       countries = countries,
       should_quit = false,
-      tabs = TabsState(Array("List of Movies", "Stats")),
+      tabs = TabsState(Array("List of Movies", "Stats Streaming Provider")),
       enhanced_graphics = enhanced_graphics,
       streamingProviderSpread = if countries.isLeft then
         val countriesLeft = countries.left.get
         getSpreadStreamingProvider(countriesLeft)
-      else mutable.Map[String, Int]()
+      else mutable.Map[String, Int](
+        "Error" -> 100
+      ),
+      streamingProviderPaymentModelStread = if countries.isLeft then
+        val countriesLeft = countries.left.get
+        val streamingProvider = getStreamingProvider(countriesLeft)
+        getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
+      else mutable.Map[String, Int](
+        "Error" -> 100
+      )
     )

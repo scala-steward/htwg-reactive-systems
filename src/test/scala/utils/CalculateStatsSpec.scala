@@ -1,43 +1,150 @@
 package utils
 
 import myPackage.models.Country
-import myPackage.utils.{getSpreadStreamingProvider, getStreamingProvider}
+import myPackage.utils.{getSpreadStreamingProvider, getAllStreamingProviderAsList}
 import org.scalatest.*
 import org.scalatest.flatspec.*
 import org.scalatest.matchers.*
 
 import scala.runtime.stdLibPatches.Predef.assert
+import myPackage.models.StreamingProvider
+import myPackage.utils.getStreamingProvider
+import myPackage.utils.getPaymentModelsSpreadFromStreamingProvider
+import scala.collection.mutable
 
 class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
 
-  "getStreamingProvider" should "return an array of unique streaming providers" in {
-    val countries = Array(
-      Country("Country1", "DE", List("Netflix", "Hulu")),
-      Country("Country2", "CH", List("Netflix", "Amazon Prime")),
-      Country("Country3", "PL", List("Hulu", "Disney+"))
-    )
+  "getSpreadStreamingProvider" should "return a map of streaming providers and their percentage of countries that support them" in {
+      val countries = Array(
+        Country(name = "Country A",code = "de",
+         servicesRaw = ujson.Obj(
+        "Netflix" -> ujson.Obj(),
+    
+        ),
+        servicesAsList = List("Netflix", "Hulu", "Disney+")
+        ))
+ 
 
-    val streamingProviders = getStreamingProvider(countries)
+      val result = getSpreadStreamingProvider(countries)
+      println(result)
 
-    streamingProviders.length should be(4)
-    streamingProviders should contain("Netflix")
-    streamingProviders should contain("Hulu")
-    streamingProviders should contain("Amazon Prime")
-    streamingProviders should contain("Disney+")
+      result shouldEqual mutable.Map(
+        "Netflix" -> 100,
+        "Disney+" -> 100,
+        "Hulu" -> 100
+      )
   }
 
-  "getSpreadStreamingProvider" should "return a map of streaming providers and their percentage of countries" in {
-    val countries = Array(
-      Country("Country1", "DE", List("Netflix", "Hulu")),
-      Country("Country2", "CH", List("Netflix", "Amazon Prime")),
-      Country("Country3", "PL", List("Hulu", "Disney+"))
-    )
+    it should "return an empty map when given an empty array of countries" in {
+    val countries = Array.empty[Country]
 
-    val streamingProviderPercentage = getSpreadStreamingProvider(countries)
+    val result = getSpreadStreamingProvider(countries)
 
-    streamingProviderPercentage.size should be(4)
-    streamingProviderPercentage("Netflix") should be(66)
-    streamingProviderPercentage("Hulu") should be(66)
-    streamingProviderPercentage("Amazon Prime") should be(33)
-    streamingProviderPercentage("Disney+") should be(33)
-  }
+    result shouldBe empty
+    }
+
+    it should "return a map with a single streaming provider when given an array of countries with only one streaming provider" in {
+      val countries = Array(
+        Country("Country A", "de",ujson.Obj(), servicesAsList = List("Netflix")),
+        Country("Country B", "pl",ujson.Obj(), servicesAsList = List("Netflix")),
+        Country("Country C", "af",ujson.Obj(), servicesAsList = List("Netflix"))
+      )
+
+      val result = getSpreadStreamingProvider(countries)
+
+      result shouldEqual mutable.Map("Netflix" -> 100)
+    }
+
+    it should "return a map with a single streaming provider when given an array of countries with only one streaming provider and one country" in {
+      val countries = Array(
+        Country("Country A", "de",ujson.Obj(), servicesAsList = List("Netflix")),
+      )
+
+      val result = getSpreadStreamingProvider(countries)
+
+      result shouldEqual mutable.Map("Netflix" -> 100)
+    }
+        
+
+    "getAllStreamingProviderAsList" should "return a list of all streaming providers in the given countries" in {
+      val countries = Array(
+        Country(name = "Country A",code = "de",
+         servicesRaw = ujson.Obj(
+        "Netflix" -> ujson.Obj(
+        "id" -> "netflix",
+        "name" -> "Netflix",
+        "homePage" -> "https://www.netflix.com",
+        "supportedStreamingTypes" -> ujson.Obj(
+          "buy" -> true,
+          "subscribe" -> true,
+          "rent" -> false,
+          "addon" -> false,
+          "free" -> false
+        )
+          ),
+    
+        ),
+        servicesAsList = List("Netflix", "Hulu", "Disney+")
+        ),
+        Country(name = "Country B",code = "pl",
+         servicesRaw = ujson.Obj(
+        "Netflix" -> ujson.Obj(
+        "id" -> "netflix",
+        "name" -> "Netflix",
+        "homePage" -> "https://www.netflix.com",
+        "supportedStreamingTypes" -> ujson.Obj(
+          "buy" -> true,
+          "subscribe" -> true,
+          "rent" -> false,
+          "addon" -> false,
+          "free" -> false
+        )
+          ),
+    
+        ),
+        servicesAsList = List("Netflix", "Hulu", "Disney+")
+        ),
+        Country(name = "Country C",code = "af",
+         servicesRaw = ujson.Obj(
+        "Netflix" -> ujson.Obj(
+        "id" -> "netflix",
+        "name" -> "Netflix",
+        "homePage" -> "https://www.netflix.com",
+        "supportedStreamingTypes" -> ujson.Obj(
+          "buy" -> true,
+          "subscribe" -> true,
+          "rent" -> false,
+          "addon" -> false,
+          "free" -> false
+        )
+          ),
+    
+        ),
+        servicesAsList = List("Netflix", "Hulu", "Disney+")
+        )
+      )
+
+      val expected = Array("Netflix", "Hulu", "Disney+")
+
+      val result = getAllStreamingProviderAsList(countries)
+
+      result should contain theSameElementsAs expected
+    }
+
+    "getPaymentModelsSpreadFromStreamingProvider" should "return a map of streaming provider streaming type and percentage of countries that support it" in {
+      val streamingProviders = Array(
+        StreamingProvider("Netflix", "Netflix", "", Map("buy" -> true, "subscribe" -> true)),
+        StreamingProvider("Hulu", "Hulu", "", Map("buy" -> false, "subscribe" -> true)),
+        StreamingProvider("Disney+", "Disney+", "", Map("buy" -> true, "subscribe" -> false))
+      )
+
+      val expected = Map(
+        "subscribe" -> 66,
+        "buy" -> 66
+      )
+
+      val result = getPaymentModelsSpreadFromStreamingProvider(streamingProviders)
+
+      result shouldEqual expected
+    }
+

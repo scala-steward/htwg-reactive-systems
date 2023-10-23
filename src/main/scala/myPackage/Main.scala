@@ -5,9 +5,13 @@ import tui.crossterm.CrosstermJni
 import tui.*
 
 import java.time.{Duration, Instant}
+import myPackage.utils.getAllStreamingProviderAsList
+import myPackage.utils.getSpreadStreamingProvider
+import myPackage.utils.getStreamingProvider
+import myPackage.utils.getPaymentModelsSpreadFromStreamingProvider
 
 object Scala:
-  def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
+   def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
     // create app and run it
     val tick_rate = Duration.ofMillis(250)
     // getting countries
@@ -19,8 +23,8 @@ object Scala:
     )
 
     run_app(terminal, app, tick_rate, jni)
-  }
-  /*  @main def hello: Unit = {
+  } 
+  /* @main def hello: Unit = {
         println("Hello world!")
         println("wtf")
      // get countries from api
@@ -31,21 +35,35 @@ object Scala:
           // get streaming providers spread
           val countriesLeft = countries.left.get
           val streamingProvider = getStreamingProvider(countriesLeft)
-          val streamingProviderPercentage = getSpreadStreamingProvider(countriesLeft, streamingProvider)
-          println("Streaming provider percentage: "+streamingProviderPercentage)
+          // loop over streamingproviders and print them
+          streamingProvider.foreach((streamingProvider) =>
+            println("name: "+ streamingProvider.name)
+            println("id: "+streamingProvider.id)
+            println("url: "+streamingProvider.url)
+            streamingProvider.supportedStreamingTypes.foreach((key, value) =>
+              println("supported Type: "+key)
+              println("value: "+value)
+            )
+            println("--------------------")
+            )
+          val streamingProviderSupportedStreamingTypesPercentage = getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
+          streamingProviderSupportedStreamingTypesPercentage.foreach((key, value) =>
+            println("supported Type: "+key)
+            println("value %: "+value)
+          )
         }
         else {
           println("Error getting countries")
         }
         println("End of program")
-    } */
+    }  */
 
-  def run_app(
+def run_app(
       terminal: Terminal,
       app: App,
       tick_rate: java.time.Duration,
       jni: CrosstermJni
-  ): Unit =
+    ): Unit =
     val last_tick = Instant.now()
     def elapsed = java.time.Duration.between(last_tick, java.time.Instant.now())
 

@@ -17,8 +17,9 @@ def getCountries(): Either[Array[Country], String] =
       // get keys from services and convert to List
       val servicesKeys = services.obj.keys.toList
       val countryName = value("name")
+      val servicesRaw = value("services")
       // add country to countriesList
-      val country = Country(countryName.str, key, servicesKeys)
+      val country = Country(countryName.str, key,servicesRaw ,servicesKeys)
       countriesList = countriesList :+ country
     )
     return Left(countriesList)

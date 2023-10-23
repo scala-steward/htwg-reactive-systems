@@ -42,7 +42,7 @@ object ui:
           val cells = Array(
             TableWidget.Cell(Text.nostyle(c.name)),
             TableWidget.Cell(Text.nostyle(c.code)),
-            TableWidget.Cell(Text.nostyle(c.services.mkString(", ")))
+            TableWidget.Cell(Text.nostyle(c.servicesAsList.mkString(", ")))
           )
           TableWidget.Row(cells)
         }
@@ -81,41 +81,76 @@ object ui:
     )
     f.renderWidget(table, chunks(0))
 
-  def draw_second_tab(f: Frame, app: App, area: Rect): Unit =
-    val chunks = Layout(
-      direction = Direction.Horizontal,
-      constraints = Array(Constraint.Ratio(1, 1))
-    ).split(area)
+def draw_second_tab(f: Frame, app: App, area: Rect): Unit =
+  val layout = Layout(
+    direction = Direction.Horizontal,
+    constraints = Array(Constraint.Ratio(1, 2), Constraint.Ratio(1, 2))
+  )
 
-    val table = TableWidget(
-      rows =
-        app.streamingProviderSpread.map { case (provider, spreadPercentage) =>
-          val cells = Array(
-            TableWidget.Cell(Text.nostyle(provider)),
-            TableWidget.Cell(Text.nostyle(spreadPercentage.toString))
-          )
-          TableWidget.Row(cells)
-        }.toArray,
-      header = Some(
-        TableWidget.Row(
-          cells = Array(
-            TableWidget.Cell(Text.nostyle("Streaming Provider")),
-            TableWidget.Cell(Text.nostyle("Percentage"))
-          ),
-          style = Style.DEFAULT.fg(Color.Yellow),
-          bottomMargin = 1
+  val chunks = layout.split(area)
+  // Create separate tables for the first two and the last two columns
+  val streamingProviderTable = TableWidget(
+    rows =
+      app.streamingProviderSpread.map { case (provider, spreadPercentage) =>
+        val cells = Array(
+          TableWidget.Cell(Text.nostyle(provider)),
+          TableWidget.Cell(Text.nostyle(spreadPercentage.toString))
         )
-      ),
-      block = Some(
-        BlockWidget(
-          title = Some(Spans.nostyle("Countries")),
-          borders = Borders.ALL
-        )
-      ),
-      widths = Array(
-        Constraint.Ratio(1, 3),
-        Constraint.Ratio(1, 3),
-        Constraint.Ratio(1, 3)
+        TableWidget.Row(cells)
+      }.toArray,
+    header = Some(
+      TableWidget.Row(
+        cells = Array(
+          TableWidget.Cell(Text.nostyle("Streaming Provider")),
+          TableWidget.Cell(Text.nostyle("Percentage"))
+        ),
+        style = Style.DEFAULT.fg(Color.Yellow),
+        bottomMargin = 1
       )
+    ),
+    block = Some(
+      BlockWidget(
+        title = Some(Spans.nostyle("Stats across Countries")),
+        borders = Borders.ALL
+      )
+    ),
+    widths = Array(
+      Constraint.Ratio(1, 2),
+      Constraint.Ratio(1, 2)
     )
-    f.renderWidget(table, chunks(0))
+  )
+
+  val paymentMethodTable = TableWidget(
+    rows =
+      app.streamingProviderPaymentModelStread.map { case (provider, paymentMethod) =>
+        val cells = Array(
+          TableWidget.Cell(Text.nostyle(provider)),
+          TableWidget.Cell(Text.nostyle(paymentMethod.toString))
+        )
+        TableWidget.Row(cells)
+      }.toArray,
+    header = Some(
+      TableWidget.Row(
+        cells = Array(
+          TableWidget.Cell(Text.nostyle("Payment Method")),
+          TableWidget.Cell(Text.nostyle("Percentage"))
+        ),
+        style = Style.DEFAULT.fg(Color.Yellow),
+        bottomMargin = 1
+      )
+    ),
+    block = Some(
+      BlockWidget(
+        title = Some(Spans.nostyle("Payment Methods")),
+        borders = Borders.ALL
+      )
+    ),
+    widths = Array(
+      Constraint.Ratio(1, 2),
+      Constraint.Ratio(1, 2)
+    )
+  )
+
+  // Render the two tables side by side
+  f.renderWidget(streamingProviderTable, chunks(0))
+  f.renderWidget(paymentMethodTable, chunks(1))
