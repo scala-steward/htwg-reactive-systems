@@ -43,7 +43,7 @@ case class StatefulList[T](
     this.state.select(Some(i))
 
 object StatefulList:
-  def with_items[T](items: Array[T]): StatefulList[T] =
+  def withItems[T](items: Array[T]): StatefulList[T] =
     StatefulList(
       state = ListWidget.State(),
       items = mutable.ArrayDeque.from(items)
@@ -51,28 +51,28 @@ object StatefulList:
 
 case class App(
     title: String,
-    var should_quit: Boolean,
+    var shouldQuit: Boolean,
     tabs: TabsState,
     countries: Try[List[Country]],
     streamingProviderSpread: Map[String, Int],
     streamingProviderPaymentModelSpread: Map[String, Int]
 ):
 
-  /*   def on_up(): Unit =
+  /*   def onUp(): Unit =
     this.countries.previous()
 
-  def on_down(): Unit =
+  def onDown(): Unit =
     this.countries.next() */
 
-  def on_right(): Unit =
+  def onRight(): Unit =
     this.tabs.next()
 
-  def on_left(): Unit =
+  def onLeft(): Unit =
     this.tabs.previous()
 
-  def on_key(c: Char): Unit =
+  def onKey(c: Char): Unit =
     c match
-      case 'q' => this.should_quit = true
+      case 'q' => this.shouldQuit = true
       case _   => ()
 
 object App:
@@ -83,7 +83,7 @@ object App:
     new App(
       title = title,
       countries = countries,
-      should_quit = false,
+      shouldQuit = false,
       tabs = TabsState(Array("List of Movies", "Stats Streaming Provider")),
       streamingProviderSpread =
         if countries.isSuccess then getSpreadStreamingProvider(countries.get)

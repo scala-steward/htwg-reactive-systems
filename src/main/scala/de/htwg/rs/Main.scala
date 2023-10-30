@@ -14,7 +14,7 @@ object Scala:
     val apiClient =
       ApiClient("***REMOVED***")
     // create app and run it
-    val tick_rate = Duration.ofMillis(250)
+    val tickRate = Duration.ofMillis(250)
     // getting countries
     val countries = apiClient.getCountries;
     val app = App(
@@ -22,7 +22,7 @@ object Scala:
       countries = countries
     )
 
-    run_app(terminal, app, tick_rate, jni)
+    runApp(terminal, app, tickRate, jni)
   }
 /* @main def hello: Unit = {
         println("Hello world!")
@@ -58,18 +58,18 @@ object Scala:
         println("End of program")
     }  */
 
-def run_app(
+def runApp(
     terminal: Terminal,
     app: App,
-    tick_rate: java.time.Duration,
+    tickRate: java.time.Duration,
     jni: CrosstermJni
 ): Unit =
-  val last_tick = Instant.now()
+  val lastTick = Instant.now()
 
-  def elapsed = java.time.Duration.between(last_tick, java.time.Instant.now())
+  def elapsed = java.time.Duration.between(lastTick, java.time.Instant.now())
 
   def timeout =
-    val timeout = tick_rate.minus(elapsed)
+    val timeout = tickRate.minus(elapsed)
     new tui.crossterm.Duration(timeout.toSeconds, timeout.getNano)
 
   while true do
@@ -79,11 +79,11 @@ def run_app(
       jni.read() match
         case key: tui.crossterm.Event.Key =>
           key.keyEvent.code match
-            case char: tui.crossterm.KeyCode.Char => app.on_key(char.c())
-            case _: tui.crossterm.KeyCode.Left    => app.on_left()
-            // case _: tui.crossterm.KeyCode.Up      => app.on_up()
-            case _: tui.crossterm.KeyCode.Right => app.on_right()
-            // case _: tui.crossterm.KeyCode.Down    => app.on_down()
+            case char: tui.crossterm.KeyCode.Char => app.onKey(char.c())
+            case _: tui.crossterm.KeyCode.Left    => app.onLeft()
+            // case _: tui.crossterm.KeyCode.Up      => app.onUp()
+            case _: tui.crossterm.KeyCode.Right => app.onRight()
+            // case _: tui.crossterm.KeyCode.Down    => app.onDown()
             case _ => ()
         case _ => ()
-    if app.should_quit then return
+    if app.shouldQuit then return

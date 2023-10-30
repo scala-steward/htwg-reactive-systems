@@ -30,11 +30,11 @@ object ui:
     )
     f.renderWidget(tabs, chunks(0))
     app.tabs.index match
-      case 0 => draw_first_tab(f, app, chunks(1))
-      case 1 => draw_second_tab(f, app, chunks(1))
+      case 0 => drawFirstTab(f, app, chunks(1))
+      case 1 => drawSecondTab(f, app, chunks(1))
       case _ =>
 
-  def draw_first_tab(f: Frame, app: App, area: Rect): Unit =
+  def drawFirstTab(f: Frame, app: App, area: Rect): Unit =
     val chunks = Layout(
       direction = Direction.Horizontal,
       constraints = Array(Constraint.Ratio(1, 1))
@@ -84,7 +84,7 @@ object ui:
     )
     f.renderWidget(table, chunks(0))
 
-def draw_second_tab(f: Frame, app: App, area: Rect): Unit =
+def drawSecondTab(f: Frame, app: App, area: Rect): Unit =
   val layout = Layout(
     direction = Direction.Horizontal,
     constraints = Array(Constraint.Ratio(1, 2), Constraint.Ratio(1, 2))
