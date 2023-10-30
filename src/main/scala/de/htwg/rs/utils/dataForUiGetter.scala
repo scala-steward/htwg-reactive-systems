@@ -1,7 +1,7 @@
-package myPackage
-package utils
+package de.htwg.rs.utils
 
-import myPackage.models.Country
+import de.htwg.rs.getCountries_json
+import de.htwg.rs.models.Country
 
 def getCountries(): Either[Array[Country], String] =
   val countries = getCountries_json()
@@ -19,7 +19,7 @@ def getCountries(): Either[Array[Country], String] =
       val countryName = value("name")
       val servicesRaw = value("services")
       // add country to countriesList
-      val country = Country(countryName.str, key,servicesRaw ,servicesKeys)
+      val country = Country(countryName.str, key, servicesRaw, servicesKeys)
       countriesList = countriesList :+ country
     )
     return Left(countriesList)

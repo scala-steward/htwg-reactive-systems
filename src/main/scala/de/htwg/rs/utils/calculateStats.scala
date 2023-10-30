@@ -1,11 +1,9 @@
-package myPackage
-package utils
+package de.htwg.rs.utils
 
-import myPackage.models.Country
+import de.htwg.rs.models.{Country, StreamingProvider}
 
 import scala.collection.mutable
 import scala.collection.mutable.Map
-import myPackage.models.StreamingProvider
 
 def getSpreadStreamingProvider(
     countries: Array[Country]
@@ -16,7 +14,9 @@ def getSpreadStreamingProvider(
   val streamingProviderPercentage = mutable.Map[String, Int]()
   streamingProvider.foreach((streamingProvider) =>
     val amountStreamingProvider =
-      countries.count((country) => country.servicesAsList.contains(streamingProvider))
+      countries.count((country) =>
+        country.servicesAsList.contains(streamingProvider)
+      )
     val percentageStreamingProvider =
       (amountStreamingProvider * 100) / countries.length
     streamingProviderPercentage(streamingProvider) = percentageStreamingProvider
@@ -40,8 +40,9 @@ def getStreamingProvider(countries: Array[Country]): Array[StreamingProvider] =
   countries.foreach((country) =>
     country.servicesAsList.foreach((service) =>
       if !streamingProvider.exists((streamingProvider) =>
-            streamingProvider.id == service
-          ) then
+          streamingProvider.id == service
+        )
+      then
         val streamingProviderName = country.servicesRaw(service)("name")
         val streamingProviderUrl = country.servicesRaw(service)("homePage")
         val streamingProviderSupportedStreamingTypes =
@@ -69,25 +70,22 @@ def getStreamingProvider(countries: Array[Country]): Array[StreamingProvider] =
   // one streaming provider can support multiple streaming types
   // you can get the Array of streaming providers from getStreamingProvider()
 def getPaymentModelsSpreadFromStreamingProvider(
-    streamingProvider: Array[StreamingProvider]): mutable.Map[String,Int] =
- // create empty Key VAlue storage of streaming providertype and percentage
-    val streamingProviderSupportedStreamingTypesCount = mutable.Map[String, Int]()
-    streamingProvider.foreach((streamingProvider) =>
-      streamingProvider.supportedStreamingTypes.foreach((key, value) =>
-        if value == true then
-          if !streamingProviderSupportedStreamingTypesCount.contains(key) then
-            streamingProviderSupportedStreamingTypesCount(key) = 1
-          else
-            streamingProviderSupportedStreamingTypesCount(key) += 1
-      ) 
+    streamingProvider: Array[StreamingProvider]
+): mutable.Map[String, Int] =
+  // create empty Key VAlue storage of streaming providertype and percentage
+  val streamingProviderSupportedStreamingTypesCount = mutable.Map[String, Int]()
+  streamingProvider.foreach((streamingProvider) =>
+    streamingProvider.supportedStreamingTypes.foreach((key, value) =>
+      if value == true then
+        if !streamingProviderSupportedStreamingTypesCount.contains(key) then
+          streamingProviderSupportedStreamingTypesCount(key) = 1
+        else streamingProviderSupportedStreamingTypesCount(key) += 1
     )
-    val streamingProviderSupportedStreamingTypesPercentage = mutable.Map[String, Int]()
-    streamingProviderSupportedStreamingTypesCount.foreach((key, value) =>
-      val percentage = (value * 100) / streamingProvider.length
-      streamingProviderSupportedStreamingTypesPercentage(key) = percentage
-    )
-    return streamingProviderSupportedStreamingTypesPercentage
-  
-  
-   
-      
+  )
+  val streamingProviderSupportedStreamingTypesPercentage =
+    mutable.Map[String, Int]()
+  streamingProviderSupportedStreamingTypesCount.foreach((key, value) =>
+    val percentage = (value * 100) / streamingProvider.length
+    streamingProviderSupportedStreamingTypesPercentage(key) = percentage
+  )
+  return streamingProviderSupportedStreamingTypesPercentage

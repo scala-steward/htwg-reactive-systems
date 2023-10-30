@@ -1,4 +1,5 @@
-package myPackage
+package de.htwg.rs
+
 import scalaj.http.Http
 
 def get(url: String): Either[String, String] =

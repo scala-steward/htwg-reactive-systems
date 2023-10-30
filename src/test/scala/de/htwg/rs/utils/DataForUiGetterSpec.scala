@@ -1,11 +1,12 @@
-package utils
+package de.htwg.rs.utils
 
-import myPackage.utils.getCountries
+import de.htwg.rs.utils.getCountries
+
+import scala.runtime.stdLibPatches.Predef.assert
+
 import org.scalatest.*
 import org.scalatest.flatspec.*
 import org.scalatest.matchers.*
-
-import scala.runtime.stdLibPatches.Predef.assert
 
 class DataForUiGetterSpec extends AnyFlatSpec with should.Matchers:
 

@@ -1,8 +1,7 @@
-package myPackage
+package de.htwg.rs
 
 import tui.*
 import tui.widgets.*
-import tui.widgets.canvas.*
 import tui.widgets.tabs.TabsWidget
 
 object ui:
@@ -121,14 +120,14 @@ def draw_second_tab(f: Frame, app: App, area: Rect): Unit =
   )
 
   val paymentMethodTable = TableWidget(
-    rows =
-      app.streamingProviderPaymentModelStread.map { case (provider, paymentMethod) =>
+    rows = app.streamingProviderPaymentModelStread.map {
+      case (provider, paymentMethod) =>
         val cells = Array(
           TableWidget.Cell(Text.nostyle(provider)),
           TableWidget.Cell(Text.nostyle(paymentMethod.toString))
         )
         TableWidget.Row(cells)
-      }.toArray,
+    }.toArray,
     header = Some(
       TableWidget.Row(
         cells = Array(

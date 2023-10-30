@@ -1,5 +1,4 @@
-package myPackage
-package models
+package de.htwg.rs.models
 
 case class Country(
     name: String,
