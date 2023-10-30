@@ -1,7 +1,7 @@
 package de.htwg.rs
 
 import de.htwg.rs.controller.App
-import de.htwg.rs.model.utils.getCountries
+import de.htwg.rs.model.utils.ApiClient
 import de.htwg.rs.view.ui
 
 import java.time.{Duration, Instant}
@@ -11,10 +11,12 @@ import tui.crossterm.CrosstermJni
 
 object Scala:
   def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
+    val apiClient =
+      ApiClient("***REMOVED***")
     // create app and run it
     val tick_rate = Duration.ofMillis(250)
     // getting countries
-    val countries = getCountries();
+    val countries = apiClient.getCountries();
     val app = App(
       title = "Movies Movies Movies!!",
       enhanced_graphics = true,

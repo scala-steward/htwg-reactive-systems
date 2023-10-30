@@ -38,7 +38,7 @@ object ui:
       constraints = Array(Constraint.Ratio(1, 1))
     ).split(area)
     val items = app.countries match
-      case Left(countries) =>
+      case Right(countries) =>
         countries.map { c =>
           val cells = Array(
             TableWidget.Cell(Text.nostyle(c.name)),
@@ -47,7 +47,7 @@ object ui:
           )
           TableWidget.Row(cells)
         }
-      case Right(error) =>
+      case Left(error) =>
         val cells = Array(
           TableWidget.Cell(Text.nostyle(error)),
           TableWidget.Cell(Text.nostyle("")),

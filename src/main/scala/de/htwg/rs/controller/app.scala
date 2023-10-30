@@ -52,7 +52,7 @@ case class App(
     title: String,
     var should_quit: Boolean,
     tabs: TabsState,
-    countries: Either[Array[Country], String],
+    countries: Either[String, Array[Country]],
     streamingProviderSpread: mutable.Map[String, Int],
     streamingProviderPaymentModelStread: mutable.Map[String, Int],
     enhanced_graphics: Boolean
@@ -79,7 +79,7 @@ object App:
   def apply(
       title: String,
       enhanced_graphics: Boolean,
-      countries: Either[Array[Country], String]
+      countries: Either[String, Array[Country]]
   ): App =
     new App(
       title = title,
@@ -88,18 +88,18 @@ object App:
       tabs = TabsState(Array("List of Movies", "Stats Streaming Provider")),
       enhanced_graphics = enhanced_graphics,
       streamingProviderSpread =
-        if countries.isLeft then
-          val countriesLeft = countries.left.get
-          getSpreadStreamingProvider(countriesLeft)
+        if countries.isRight then
+          val countriesRight = countries.right.get
+          getSpreadStreamingProvider(countriesRight)
         else
           mutable.Map[String, Int](
             "Error" -> 100
           )
       ,
       streamingProviderPaymentModelStread =
-        if countries.isLeft then
-          val countriesLeft = countries.left.get
-          val streamingProvider = getStreamingProvider(countriesLeft)
+        if countries.isRight then
+          val countriesRight = countries.right.get
+          val streamingProvider = getStreamingProvider(countriesRight)
           getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
         else
           mutable.Map[String, Int](

@@ -6,6 +6,7 @@ case class Country(
     servicesRaw: ujson.Value,
     servicesAsList: List[String]
 )
+
 case class StreamingProvider(
     name: String,
     id: String,
