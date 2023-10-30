@@ -19,7 +19,6 @@ object Scala:
     val countries = apiClient.getCountries;
     val app = App(
       title = "Movies Movies Movies!!",
-      enhanced_graphics = true,
       countries = countries
     )
 

@@ -55,8 +55,7 @@ case class App(
     tabs: TabsState,
     countries: Try[List[Country]],
     streamingProviderSpread: Map[String, Int],
-    streamingProviderPaymentModelSpread: Map[String, Int],
-    enhanced_graphics: Boolean
+    streamingProviderPaymentModelSpread: Map[String, Int]
 ):
 
   /*   def on_up(): Unit =
@@ -79,7 +78,6 @@ case class App(
 object App:
   def apply(
       title: String,
-      enhanced_graphics: Boolean,
       countries: Try[List[Country]]
   ): App =
     new App(
@@ -87,7 +85,6 @@ object App:
       countries = countries,
       should_quit = false,
       tabs = TabsState(Array("List of Movies", "Stats Streaming Provider")),
-      enhanced_graphics = enhanced_graphics,
       streamingProviderSpread =
         if countries.isSuccess then getSpreadStreamingProvider(countries.get)
         else Map[String, Int]("Error" -> 100),
