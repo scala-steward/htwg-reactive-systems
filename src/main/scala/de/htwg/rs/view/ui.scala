@@ -13,9 +13,9 @@ object ui:
     val chunks = Layout(constraints =
       Array(Constraint.Length(3), Constraint.Min(0))
     ).split(f.size)
-    val titles = app.tabs.titles.map(t =>
-      Spans.from(Span.styled(t, Style.DEFAULT.fg(Color.Green)))
-    )
+    val titles = app.tabs.titles
+      .map(t => Spans.from(Span.styled(t, Style.DEFAULT.fg(Color.Green))))
+      .toArray
 
     val tabs = TabsWidget(
       titles = titles,

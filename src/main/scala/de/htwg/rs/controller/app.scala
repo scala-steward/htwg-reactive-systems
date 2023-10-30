@@ -9,21 +9,19 @@ import de.htwg.rs.model.utils.{
 
 import scala.collection.immutable.Map
 import scala.collection.mutable
-import scala.reflect.ClassTag
 import scala.util.Try
 
 import tui.*
 import tui.widgets.ListWidget
 
-case class TabsState(titles: Array[String]):
+case class TabsState(titles: List[String]):
   var index: Int = 0
 
   def next(): Unit =
-    index = (this.index + 1) % this.titles.length
+    index = (index + 1) % titles.length
 
   def previous(): Unit =
-    if this.index > 0 then this.index -= 1
-    else this.index = this.titles.length - 1
+    index = (index - 1 + titles.length) % titles.length
 
 case class StatefulList[T](
     state: ListWidget.State,
@@ -84,7 +82,7 @@ object App:
       title = title,
       countries = countries,
       shouldQuit = false,
-      tabs = TabsState(Array("List of Movies", "Stats Streaming Provider")),
+      tabs = TabsState(List("List of Movies", "Stats Streaming Provider")),
       streamingProviderSpread =
         if countries.isSuccess then getSpreadStreamingProvider(countries.get)
         else Map[String, Int]("Error" -> 100),
