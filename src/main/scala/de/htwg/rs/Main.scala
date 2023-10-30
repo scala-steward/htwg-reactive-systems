@@ -1,6 +1,8 @@
 package de.htwg.rs
 
-import de.htwg.rs.utils.getCountries
+import de.htwg.rs.controller.App
+import de.htwg.rs.model.utils.getCountries
+import de.htwg.rs.view.ui
 
 import java.time.{Duration, Instant}
 

@@ -1,6 +1,6 @@
-package de.htwg.rs.utils
+package de.htwg.rs.model.utils
 
-import de.htwg.rs.utils.getCountries
+import de.htwg.rs.model.utils.getCountries
 
 import scala.runtime.stdLibPatches.Predef.assert
 

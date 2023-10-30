@@ -1,7 +1,7 @@
-package de.htwg.rs
+package de.htwg.rs.controller
 
-import de.htwg.rs.models.Country
-import de.htwg.rs.utils.{
+import de.htwg.rs.model.models.Country
+import de.htwg.rs.model.utils.{
   getPaymentModelsSpreadFromStreamingProvider,
   getSpreadStreamingProvider,
   getStreamingProvider

@@ -1,6 +1,6 @@
-package de.htwg.rs.utils
+package de.htwg.rs.model.utils
 
-import de.htwg.rs.models.{Country, StreamingProvider}
+import de.htwg.rs.model.models.{Country, StreamingProvider}
 
 import scala.collection.mutable
 import scala.collection.mutable.Map

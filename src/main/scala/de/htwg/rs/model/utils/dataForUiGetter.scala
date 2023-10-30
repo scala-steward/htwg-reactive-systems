@@ -1,7 +1,7 @@
-package de.htwg.rs.utils
+package de.htwg.rs.model.utils
 
 import de.htwg.rs.getCountries_json
-import de.htwg.rs.models.Country
+import de.htwg.rs.model.models.Country
 
 def getCountries(): Either[Array[Country], String] =
   val countries = getCountries_json()

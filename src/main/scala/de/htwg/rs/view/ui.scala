@@ -1,4 +1,6 @@
-package de.htwg.rs
+package de.htwg.rs.view
+
+import de.htwg.rs.controller.App
 
 import tui.*
 import tui.widgets.*
