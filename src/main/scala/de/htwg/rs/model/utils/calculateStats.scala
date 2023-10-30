@@ -2,41 +2,29 @@ package de.htwg.rs.model.utils
 
 import de.htwg.rs.model.models.{Country, StreamingProvider}
 
+import scala.collection.immutable.Map
 import scala.collection.mutable
-import scala.collection.mutable.Map
 
-def getSpreadStreamingProvider(
-    countries: Array[Country]
-): mutable.Map[String, Int] =
-  // get streaming providers
-  val streamingProvider = getAllStreamingProviderAsList(countries)
-  // create empty Key VAlue storage of streaming providers and percentage
-  val streamingProviderPercentage = mutable.Map[String, Int]()
-  streamingProvider.foreach((streamingProvider) =>
-    val amountStreamingProvider =
-      countries.count((country) =>
-        country.servicesAsList.contains(streamingProvider)
-      )
-    val percentageStreamingProvider =
-      (amountStreamingProvider * 100) / countries.length
-    streamingProviderPercentage(streamingProvider) = percentageStreamingProvider
-  )
-  return streamingProviderPercentage
+/** Computes a map of streaming providers and the percentage of countries that
+  * support it
+  */
+def getSpreadStreamingProvider(countries: List[Country]): Map[String, Int] =
+  countries
+    .flatMap(_.servicesAsList)
+    .groupBy(identity)
+    .view
+    .mapValues(_.length * 100 / countries.length)
+    .to(Map)
 
-def getAllStreamingProviderAsList(countries: Array[Country]): Array[String] =
+/** Returns a list of all streaming providers */
+def getAllStreamingProviderAsList(countries: List[Country]): List[String] =
+  countries
+    .flatMap(_.servicesAsList)
+    .distinct
+
+def getStreamingProvider(countries: List[Country]): List[StreamingProvider] =
   // create empty Array of streaming providers
-  var streamingProvider = Array[String]()
-  countries.foreach((country) =>
-    country.servicesAsList.foreach((service) =>
-      if !streamingProvider.contains(service) then
-        streamingProvider = streamingProvider :+ service
-    )
-  )
-  return streamingProvider
-
-def getStreamingProvider(countries: Array[Country]): Array[StreamingProvider] =
-  // create empty Array of streaming providers
-  var streamingProvider = Array[StreamingProvider]()
+  var streamingProvider = List[StreamingProvider]()
   countries.foreach((country) =>
     country.servicesAsList.foreach((service) =>
       if !streamingProvider.exists((streamingProvider) =>
@@ -70,8 +58,8 @@ def getStreamingProvider(countries: Array[Country]): Array[StreamingProvider] =
   // one streaming provider can support multiple streaming types
   // you can get the Array of streaming providers from getStreamingProvider()
 def getPaymentModelsSpreadFromStreamingProvider(
-    streamingProvider: Array[StreamingProvider]
-): mutable.Map[String, Int] =
+    streamingProvider: List[StreamingProvider]
+): Map[String, Int] =
   // create empty Key VAlue storage of streaming providertype and percentage
   val streamingProviderSupportedStreamingTypesCount = mutable.Map[String, Int]()
   streamingProvider.foreach((streamingProvider) =>
@@ -88,4 +76,4 @@ def getPaymentModelsSpreadFromStreamingProvider(
     val percentage = (value * 100) / streamingProvider.length
     streamingProviderSupportedStreamingTypesPercentage(key) = percentage
   )
-  return streamingProviderSupportedStreamingTypesPercentage
+  return Map.from(streamingProviderSupportedStreamingTypesPercentage)

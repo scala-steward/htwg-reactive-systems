@@ -7,8 +7,8 @@ import de.htwg.rs.model.utils.{
   getStreamingProvider
 }
 
+import scala.collection.immutable.Map
 import scala.collection.mutable
-import scala.collection.mutable.Map
 import scala.reflect.ClassTag
 import scala.util.Try
 
@@ -53,9 +53,9 @@ case class App(
     title: String,
     var should_quit: Boolean,
     tabs: TabsState,
-    countries: Try[Array[Country]],
-    streamingProviderSpread: mutable.Map[String, Int],
-    streamingProviderPaymentModelStread: mutable.Map[String, Int],
+    countries: Try[List[Country]],
+    streamingProviderSpread: Map[String, Int],
+    streamingProviderPaymentModelSpread: Map[String, Int],
     enhanced_graphics: Boolean
 ):
 
@@ -80,7 +80,7 @@ object App:
   def apply(
       title: String,
       enhanced_graphics: Boolean,
-      countries: Try[Array[Country]]
+      countries: Try[List[Country]]
   ): App =
     new App(
       title = title,
@@ -90,18 +90,10 @@ object App:
       enhanced_graphics = enhanced_graphics,
       streamingProviderSpread =
         if countries.isSuccess then getSpreadStreamingProvider(countries.get)
-        else
-          mutable.Map[String, Int](
-            "Error" -> 100
-          )
-      ,
-      streamingProviderPaymentModelStread =
-        if countries.isSuccess then
-          val countriesRight = countries.get
-          val streamingProvider = getStreamingProvider(countriesRight)
-          getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
-        else
-          mutable.Map[String, Int](
-            "Error" -> 100
-          )
+        else Map[String, Int]("Error" -> 100),
+      streamingProviderPaymentModelSpread = if countries.isSuccess then
+        val countriesRight = countries.get
+        val streamingProvider = getStreamingProvider(countriesRight)
+        getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
+      else Map[String, Int]("Error" -> 100)
     )

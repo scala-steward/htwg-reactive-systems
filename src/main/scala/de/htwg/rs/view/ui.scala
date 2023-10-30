@@ -48,7 +48,7 @@ object ui:
             TableWidget.Cell(Text.nostyle(c.servicesAsList.mkString(", ")))
           )
           TableWidget.Row(cells)
-        }
+        }.toArray
       case Failure(error) =>
         val cells = Array(
           TableWidget.Cell(Text.nostyle(error.getMessage)),
@@ -124,7 +124,7 @@ def draw_second_tab(f: Frame, app: App, area: Rect): Unit =
   )
 
   val paymentMethodTable = TableWidget(
-    rows = app.streamingProviderPaymentModelStread.map {
+    rows = app.streamingProviderPaymentModelSpread.map {
       case (provider, paymentMethod) =>
         val cells = Array(
           TableWidget.Cell(Text.nostyle(provider)),

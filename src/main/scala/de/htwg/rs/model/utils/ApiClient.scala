@@ -10,7 +10,7 @@ class ApiClient(
     token: String,
     host: String = "streaming-availability.p.rapidapi.com"
 ):
-  def getCountries: Try[Array[Country]] =
+  def getCountries: Try[List[Country]] =
     for
       response <- get(s"https://$host/countries")
       countries <- parseCountries(response.body)
@@ -24,7 +24,7 @@ class ApiClient(
       .asString
   }
 
-private def parseCountries(jsonString: String): Try[Array[Country]] = Try {
+private def parseCountries(jsonString: String): Try[List[Country]] = Try {
   ujson
     .read(jsonString)("result")
     .obj
@@ -35,5 +35,5 @@ private def parseCountries(jsonString: String): Try[Array[Country]] = Try {
       val servicesRaw = value("services")
       Country(countryName.str, key, servicesRaw, servicesKeys)
     }
-    .toArray
+    .toList
 }

@@ -17,7 +17,7 @@ import org.scalatest.matchers.*
 class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
 
   "getSpreadStreamingProvider" should "return a map of streaming providers and their percentage of countries that support them" in {
-    val countries = Array(
+    val countries = List(
       Country(
         name = "Country A",
         code = "de",
@@ -38,16 +38,16 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
     )
   }
 
-  it should "return an empty map when given an empty array of countries" in {
-    val countries = Array.empty[Country]
+  it should "return an empty map when given an empty list of countries" in {
+    val countries = List.empty[Country]
 
     val result = getSpreadStreamingProvider(countries)
 
     result shouldBe empty
   }
 
-  it should "return a map with a single streaming provider when given an array of countries with only one streaming provider" in {
-    val countries = Array(
+  it should "return a map with a single streaming provider when given an list of countries with only one streaming provider" in {
+    val countries = List(
       Country("Country A", "de", ujson.Obj(), servicesAsList = List("Netflix")),
       Country("Country B", "pl", ujson.Obj(), servicesAsList = List("Netflix")),
       Country("Country C", "af", ujson.Obj(), servicesAsList = List("Netflix"))
@@ -58,8 +58,8 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
     result shouldEqual mutable.Map("Netflix" -> 100)
   }
 
-  it should "return a map with a single streaming provider when given an array of countries with only one streaming provider and one country" in {
-    val countries = Array(
+  it should "return a map with a single streaming provider when given an list of countries with only one streaming provider and one country" in {
+    val countries = List(
       Country("Country A", "de", ujson.Obj(), servicesAsList = List("Netflix"))
     )
 
@@ -69,7 +69,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
   }
 
   "getAllStreamingProviderAsList" should "return a list of all streaming providers in the given countries" in {
-    val countries = Array(
+    val countries = List(
       Country(
         name = "Country A",
         code = "de",
@@ -129,7 +129,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
       )
     )
 
-    val expected = Array("Netflix", "Hulu", "Disney+")
+    val expected = List("Netflix", "Hulu", "Disney+")
 
     val result = getAllStreamingProviderAsList(countries)
 
@@ -137,7 +137,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
   }
 
   "getPaymentModelsSpreadFromStreamingProvider" should "return a map of streaming provider streaming type and percentage of countries that support it" in {
-    val streamingProviders = Array(
+    val streamingProviders = List(
       StreamingProvider(
         "Netflix",
         "Netflix",
