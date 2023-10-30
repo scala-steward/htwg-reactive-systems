@@ -16,7 +16,7 @@ object Scala:
     // create app and run it
     val tick_rate = Duration.ofMillis(250)
     // getting countries
-    val countries = apiClient.getCountries();
+    val countries = apiClient.getCountries;
     val app = App(
       title = "Movies Movies Movies!!",
       enhanced_graphics = true,

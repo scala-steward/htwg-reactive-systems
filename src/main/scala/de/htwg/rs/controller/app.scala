@@ -10,6 +10,7 @@ import de.htwg.rs.model.utils.{
 import scala.collection.mutable
 import scala.collection.mutable.Map
 import scala.reflect.ClassTag
+import scala.util.Try
 
 import tui.*
 import tui.widgets.ListWidget
@@ -52,7 +53,7 @@ case class App(
     title: String,
     var should_quit: Boolean,
     tabs: TabsState,
-    countries: Either[String, Array[Country]],
+    countries: Try[Array[Country]],
     streamingProviderSpread: mutable.Map[String, Int],
     streamingProviderPaymentModelStread: mutable.Map[String, Int],
     enhanced_graphics: Boolean
@@ -79,7 +80,7 @@ object App:
   def apply(
       title: String,
       enhanced_graphics: Boolean,
-      countries: Either[String, Array[Country]]
+      countries: Try[Array[Country]]
   ): App =
     new App(
       title = title,
@@ -88,17 +89,15 @@ object App:
       tabs = TabsState(Array("List of Movies", "Stats Streaming Provider")),
       enhanced_graphics = enhanced_graphics,
       streamingProviderSpread =
-        if countries.isRight then
-          val countriesRight = countries.right.get
-          getSpreadStreamingProvider(countriesRight)
+        if countries.isSuccess then getSpreadStreamingProvider(countries.get)
         else
           mutable.Map[String, Int](
             "Error" -> 100
           )
       ,
       streamingProviderPaymentModelStread =
-        if countries.isRight then
-          val countriesRight = countries.right.get
+        if countries.isSuccess then
+          val countriesRight = countries.get
           val streamingProvider = getStreamingProvider(countriesRight)
           getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
         else

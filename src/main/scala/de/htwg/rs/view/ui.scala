@@ -2,6 +2,8 @@ package de.htwg.rs.view
 
 import de.htwg.rs.controller.App
 
+import scala.util.{Failure, Success}
+
 import tui.*
 import tui.widgets.*
 import tui.widgets.tabs.TabsWidget
@@ -38,7 +40,7 @@ object ui:
       constraints = Array(Constraint.Ratio(1, 1))
     ).split(area)
     val items = app.countries match
-      case Right(countries) =>
+      case Success(countries) =>
         countries.map { c =>
           val cells = Array(
             TableWidget.Cell(Text.nostyle(c.name)),
@@ -47,9 +49,9 @@ object ui:
           )
           TableWidget.Row(cells)
         }
-      case Left(error) =>
+      case Failure(error) =>
         val cells = Array(
-          TableWidget.Cell(Text.nostyle(error)),
+          TableWidget.Cell(Text.nostyle(error.getMessage)),
           TableWidget.Cell(Text.nostyle("")),
           TableWidget.Cell(Text.nostyle(""))
         )
