@@ -1,4 +1,4 @@
-package de.htwg.rs.controller
+package de.htwg.rs.model
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

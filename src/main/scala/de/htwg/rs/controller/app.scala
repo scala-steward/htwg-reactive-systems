@@ -1,5 +1,6 @@
 package de.htwg.rs.controller
 
+import de.htwg.rs.model.TabsState
 import de.htwg.rs.model.models.Country
 import de.htwg.rs.model.utils.{
   getPaymentModelsSpreadFromStreamingProvider,
@@ -13,39 +14,6 @@ import scala.util.Try
 
 import tui.*
 import tui.widgets.ListWidget
-
-case class TabsState(titles: List[String]):
-  var index: Int = 0
-
-  def next(): Unit =
-    index = (index + 1) % titles.length
-
-  def previous(): Unit =
-    index = (index - 1 + titles.length) % titles.length
-
-case class StatefulList[T](
-    state: ListWidget.State,
-    items: mutable.ArrayDeque[T]
-):
-
-  def next(): Unit =
-    val i = this.state.selected match
-      case Some(i) => if i >= this.items.length - 1 then 0 else i + 1
-      case None    => 0
-    this.state.select(Some(i))
-
-  def previous(): Unit =
-    val i = this.state.selected match
-      case Some(i) => if i == 0 then this.items.length - 1 else i - 1
-      case None    => 0
-    this.state.select(Some(i))
-
-object StatefulList:
-  def withItems[T](items: Array[T]): StatefulList[T] =
-    StatefulList(
-      state = ListWidget.State(),
-      items = mutable.ArrayDeque.from(items)
-    )
 
 case class App(
     title: String,
