@@ -1,5 +1,6 @@
 package de.htwg.rs
 
+import de.htwg.rs.config.readConfigFromEnv
 import de.htwg.rs.controller.App
 import de.htwg.rs.model.utils.ApiClient
 import de.htwg.rs.view.ui
@@ -11,8 +12,8 @@ import tui.crossterm.CrosstermJni
 
 object Scala:
   def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
-    val apiClient =
-      ApiClient("***REMOVED***")
+    val config = readConfigFromEnv(sys.env)
+    val apiClient = ApiClient(token = config.apiToken, host = config.apiUrl)
     // create app and run it
     val tickRate = Duration.ofMillis(250)
     // getting countries
