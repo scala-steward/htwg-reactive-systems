@@ -1,8 +1,21 @@
-## sbt project compiled with Scala 3
+# sbt project compiled with Scala 3
 
-### Usage
+## Development
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
+### Install Pre-Commit Hook
 
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+```bash
+cp pre-commit.sh .git/hooks/pre-commit
+```
+
+## Coverage
+
+### Main Branch Coverage
+
+![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/TimAltmann/42475f58c90957ef74d0e9dbc805d309/raw/reactive_system_statment_coverage__main.json)
+![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/TimAltmann/d7c86228b1156b7e5a074ce8685c6c39/raw/reactive_system_branch_coverage__main.json)
+
+### current Branch Coverage
+
+Statement Coverage: 21.65%\
+Branch Coverage: 42.31% 
