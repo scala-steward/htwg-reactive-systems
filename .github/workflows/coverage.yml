@@ -63,8 +63,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "update code coverage"  --no-verify
-          git push    
+          git commit -m "[CI] update code coverage" || true
+          git push
         if: success()
       - name: Create Statement Badge
         uses: schneegans/dynamic-badges-action@v1.7.0
