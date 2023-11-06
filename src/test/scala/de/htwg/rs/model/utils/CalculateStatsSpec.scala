@@ -1,6 +1,12 @@
 package de.htwg.rs.model.utils
 
-import de.htwg.rs.model.models.{Country, StreamingProvider}
+import de.htwg.rs.model.models.{
+  ChangeType,
+  Country,
+  ServiceChange,
+  StreamingProvider,
+  TargetType
+}
 import de.htwg.rs.model.utils.{
   getAllStreamingProviderAsList,
   getPaymentModelsSpreadFromStreamingProvider,
@@ -29,7 +35,6 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
     )
 
     val result = getSpreadStreamingProvider(countries)
-    println(result)
 
     result shouldEqual mutable.Map(
       "Netflix" -> 100,
@@ -167,3 +172,39 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
 
     result shouldEqual expected
   }
+//
+//  "getCountChanges" should "return the number of changes for a given set of parameters" in {
+//    val result = getCountChanges(
+//      ChangeType.New,
+//      ServiceChange.Netflix,
+//      TargetType.Movie,
+//      "de",
+//      None
+//    )
+//    result.isLeft should be(true)
+//    result.left.get should be >= 0
+//  }
+//
+//  it should "return an error message if there was an error getting changes from the API" in {
+//    val result = getCountChanges(
+//      ChangeType.New,
+//      ServiceChange.Netflix,
+//      TargetType.Movie,
+//      "de",
+//      Some("cursor")
+//    )
+//    result.isRight should be(true)
+//    result.right.get should be("Error getting changes from api")
+//  }
+//
+//  it should "return an error message if any of the getCountChanges calls return an error" in {
+//    val result = getCountChangesForEveryService(
+//      ChangeType.Removed,
+//      TargetType.Episode,
+//      "invalid_country_code"
+//    )
+//    result.isLeft shouldBe true
+//    info("result.left.get: " + result.left.get.toString())
+//    // check if key of HashMap contains "error!"
+//    result.left.get.forall(_.toString.contains("error!")) shouldBe true
+//  }

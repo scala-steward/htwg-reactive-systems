@@ -1,9 +1,10 @@
 package de.htwg.rs.model.utils
 
-import de.htwg.rs.model.models.{Country, StreamingProvider}
+import de.htwg.rs.model.models.*
 
 import scala.collection.immutable.Map
 import scala.collection.mutable
+import scala.util.{Failure, Success, Try}
 
 /** Computes a map of streaming providers and the percentage of countries that
   * support it
@@ -64,7 +65,7 @@ def getPaymentModelsSpreadFromStreamingProvider(
   val streamingProviderSupportedStreamingTypesCount = mutable.Map[String, Int]()
   streamingProvider.foreach((streamingProvider) =>
     streamingProvider.supportedStreamingTypes.foreach((key, value) =>
-      if value == true then
+      if value then
         if !streamingProviderSupportedStreamingTypesCount.contains(key) then
           streamingProviderSupportedStreamingTypesCount(key) = 1
         else streamingProviderSupportedStreamingTypesCount(key) += 1
@@ -77,3 +78,68 @@ def getPaymentModelsSpreadFromStreamingProvider(
     streamingProviderSupportedStreamingTypesPercentage(key) = percentage
   )
   return Map.from(streamingProviderSupportedStreamingTypesPercentage)
+
+def getCountChanges(
+    client: ApiClient,
+    change_type: ChangeType,
+    service: ServiceChange,
+    target_type: TargetType,
+    country_code: String,
+    cursorNextPage: Option[String]
+): Try[Int] =
+  val changes = client.getChanges(
+    change_type,
+    service,
+    target_type,
+    country_code,
+    cursorNextPage
+  )
+  if changes.isSuccess then
+    val changesSucess = changes.get
+    val changesJson = ujson.read(changesSucess)("result")
+    val changesObje = changesJson.arr
+    val changesCount = changesObje.size
+    val hasMore = ujson.read(changesSucess)("hasMore").bool
+    if hasMore then
+      val nextCursor = ujson.read(changesSucess)("nextCursor").str
+      val changesCountNextPage =
+        getCountChanges(
+          client,
+          change_type,
+          service,
+          target_type,
+          country_code,
+          Some(nextCursor)
+        )
+      if changesCountNextPage.isSuccess then
+        val changesCountNextPageLeft = changesCountNextPage.get
+        Success(changesCount + changesCountNextPageLeft)
+      else Failure(new Error("Error getting changes from api"))
+    else Success(changesCount)
+  else Failure(new Error("Error getting changes from api"))
+
+// this function calls the api for every streaming service and returns the changes as Map
+def getCountChangesForEveryService(
+    client: ApiClient,
+    change_type: ChangeType,
+    target_type: TargetType,
+    country_code: String
+): Try[Map[String, Int]] =
+  // iterate over ServiceChange enum
+  val serviceChanges = ServiceChange.values
+  val serviceChangesCountMap = mutable.Map[String, Int]()
+  serviceChanges.foreach((service) =>
+    val changesCount =
+      getCountChanges(
+        client,
+        change_type,
+        service,
+        target_type,
+        country_code,
+        None
+      )
+    if changesCount.isSuccess then
+      serviceChangesCountMap(service.toString) = changesCount.get
+    else serviceChangesCountMap(service.toString + "error!") = 0
+  )
+  Success(Map.from(serviceChangesCountMap))

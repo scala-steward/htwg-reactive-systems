@@ -21,7 +21,9 @@ case class App(
     tabs: TabsState,
     countries: Try[List[Country]],
     streamingProviderSpread: Map[String, Int],
-    streamingProviderPaymentModelSpread: Map[String, Int]
+    streamingProviderPaymentModelSpread: Map[String, Int],
+    countNewChangesProvider: Map[String, Int],
+    countRemovedChangesProvider: Map[String, Int]
 ):
 
   /*   def onUp(): Unit =
@@ -44,13 +46,17 @@ case class App(
 object App:
   def apply(
       title: String,
-      countries: Try[List[Country]]
+      countries: Try[List[Country]],
+      countChangesProvider: Try[Map[String, Int]],
+      countRemovedChangesProvider: Try[Map[String, Int]]
   ): App =
     new App(
       title = title,
       countries = countries,
       shouldQuit = false,
-      tabs = TabsState(List("List of Movies", "Stats Streaming Provider")),
+      tabs = TabsState(
+        List("List of Movies", "Stats Streaming Provider", "Stats Changes")
+      ),
       streamingProviderSpread =
         if countries.isSuccess then getSpreadStreamingProvider(countries.get)
         else Map[String, Int]("Error" -> 100),
@@ -58,5 +64,12 @@ object App:
         val countriesRight = countries.get
         val streamingProvider = getStreamingProvider(countriesRight)
         getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
-      else Map[String, Int]("Error" -> 100)
+      else Map[String, Int]("Error" -> 100),
+      countNewChangesProvider =
+        if countChangesProvider.isSuccess then countChangesProvider.get
+        else Map[String, Int]("Error" -> 100),
+      countRemovedChangesProvider =
+        if countRemovedChangesProvider.isSuccess then
+          countRemovedChangesProvider.get
+        else Map[String, Int]("Error" -> 100)
     )

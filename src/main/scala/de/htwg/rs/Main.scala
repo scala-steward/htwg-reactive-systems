@@ -2,7 +2,8 @@ package de.htwg.rs
 
 import de.htwg.rs.config.readConfigFromEnv
 import de.htwg.rs.controller.App
-import de.htwg.rs.model.utils.ApiClient
+import de.htwg.rs.model.models.{ChangeType, TargetType}
+import de.htwg.rs.model.utils.{getCountChangesForEveryService, ApiClient}
 import de.htwg.rs.view.ui
 
 import java.time.{Duration, Instant}
@@ -18,46 +19,60 @@ object Scala:
     val tickRate = Duration.ofMillis(250)
     // getting countries
     val countries = apiClient.getCountries;
+    val amountChangesNew =
+      getCountChangesForEveryService(
+        apiClient,
+        ChangeType.New,
+        TargetType.Movie,
+        "de"
+      )
+    val amountChangesRemoved =
+      getCountChangesForEveryService(
+        apiClient,
+        ChangeType.Removed,
+        TargetType.Movie,
+        "de"
+      )
     val app = App(
       title = "Movies Movies Movies!!",
-      countries = countries
+      countries = countries,
+      countChangesProvider = amountChangesNew,
+      countRemovedChangesProvider = amountChangesRemoved
     )
 
     runApp(terminal, app, tickRate, jni)
   }
-/* @main def hello: Unit = {
-        println("Hello world!")
-        println("wtf")
-     // get countries from api
-        println("Getting countries")
-        val countries = getCountries();
-        if (countries.isLeft){
-          println("Success getting countries")
-          // get streaming providers spread
-          val countriesLeft = countries.left.get
-          val streamingProvider = getStreamingProvider(countriesLeft)
-          // loop over streamingproviders and print them
-          streamingProvider.foreach((streamingProvider) =>
-            println("name: "+ streamingProvider.name)
-            println("id: "+streamingProvider.id)
-            println("url: "+streamingProvider.url)
-            streamingProvider.supportedStreamingTypes.foreach((key, value) =>
-              println("supported Type: "+key)
-              println("value: "+value)
-            )
-            println("--------------------")
-            )
-          val streamingProviderSupportedStreamingTypesPercentage = getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
-          streamingProviderSupportedStreamingTypesPercentage.foreach((key, value) =>
-            println("supported Type: "+key)
-            println("value %: "+value)
-          )
-        }
-        else {
-          println("Error getting countries")
-        }
-        println("End of program")
-    }  */
+/*@main def hello: Unit =
+  println("Hello world!")
+  val config = readConfigFromEnv(sys.env)
+  val apiClient = ApiClient(token = config.apiToken, host = config.apiUrl)
+  // get countries from api
+  println("Getting countries")
+  val countries = apiClient.getCountries;
+  if countries.isSuccess then
+    println("Success getting countries")
+    // get streaming providers spread
+    val countriesLeft = countries.get
+    val streamingProvider = getStreamingProvider(countriesLeft)
+    // loop over streamingproviders and print them
+    streamingProvider.foreach((streamingProvider) =>
+      println("name: " + streamingProvider.name)
+      println("id: " + streamingProvider.id)
+      println("url: " + streamingProvider.url)
+      streamingProvider.supportedStreamingTypes.foreach((key, value) =>
+        println("supported Type: " + key)
+        println("value: " + value)
+      )
+      println("--------------------")
+    )
+    val streamingProviderSupportedStreamingTypesPercentage =
+      getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
+    streamingProviderSupportedStreamingTypesPercentage.foreach((key, value) =>
+      println("supported Type: " + key)
+      println("value %: " + value)
+    )
+  else println("Error getting countries: " + countries.failed.get)
+  println("End of program") */
 
 def runApp(
     terminal: Terminal,

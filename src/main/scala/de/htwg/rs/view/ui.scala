@@ -32,6 +32,7 @@ object ui:
     app.tabs.index match
       case 0 => drawFirstTab(f, app, chunks(1))
       case 1 => drawSecondTab(f, app, chunks(1))
+      case 2 => drawThirdTab(f, app, chunks(1))
       case _ =>
 
   def drawFirstTab(f: Frame, app: App, area: Rect): Unit =
@@ -157,3 +158,76 @@ def drawSecondTab(f: Frame, app: App, area: Rect): Unit =
   // Render the two tables side by side
   f.renderWidget(streamingProviderTable, chunks(0))
   f.renderWidget(paymentMethodTable, chunks(1))
+
+def drawThirdTab(f: Frame, app: App, area: Rect): Unit =
+  val layout = Layout(
+    direction = Direction.Horizontal,
+    constraints = Array(Constraint.Ratio(1, 2), Constraint.Ratio(1, 2))
+  )
+
+  val chunks = layout.split(area)
+  // Create separate tables for the first two and the last two columns
+  val countNewChangesProviderTable = TableWidget(
+    rows = app.countNewChangesProvider.map { case (provider, amountChanges) =>
+      val cells = Array(
+        TableWidget.Cell(Text.nostyle(provider)),
+        TableWidget.Cell(Text.nostyle(amountChanges.toString))
+      )
+      TableWidget.Row(cells)
+    }.toArray,
+    header = Some(
+      TableWidget.Row(
+        cells = Array(
+          TableWidget.Cell(Text.nostyle("Streaming Service")),
+          TableWidget.Cell(Text.nostyle("new movies in last 15 days"))
+        ),
+        style = Style.DEFAULT.fg(Color.Yellow),
+        bottomMargin = 1
+      )
+    ),
+    block = Some(
+      BlockWidget(
+        title = Some(Spans.nostyle("Stats about changes in last 15 days")),
+        borders = Borders.ALL
+      )
+    ),
+    widths = Array(
+      Constraint.Ratio(1, 2),
+      Constraint.Ratio(1, 2)
+    )
+  )
+
+  val countRemovedChangesProviderTable = TableWidget(
+    rows =
+      app.countRemovedChangesProvider.map { case (provider, amountChanges) =>
+        val cells = Array(
+          TableWidget.Cell(Text.nostyle(provider)),
+          TableWidget.Cell(Text.nostyle(amountChanges.toString))
+        )
+        TableWidget.Row(cells)
+      }.toArray,
+    header = Some(
+      TableWidget.Row(
+        cells = Array(
+          TableWidget.Cell(Text.nostyle("Streaming Service")),
+          TableWidget.Cell(Text.nostyle("removed movies in last 15 days"))
+        ),
+        style = Style.DEFAULT.fg(Color.Yellow),
+        bottomMargin = 1
+      )
+    ),
+    block = Some(
+      BlockWidget(
+        title = Some(Spans.nostyle("Stats about changes in last 15 days")),
+        borders = Borders.ALL
+      )
+    ),
+    widths = Array(
+      Constraint.Ratio(1, 2),
+      Constraint.Ratio(1, 2)
+    )
+  )
+
+  // Render the two tables side by side
+  f.renderWidget(countNewChangesProviderTable, chunks(0))
+  f.renderWidget(countRemovedChangesProviderTable, chunks(1))

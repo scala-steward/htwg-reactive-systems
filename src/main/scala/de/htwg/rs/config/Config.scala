@@ -2,7 +2,7 @@ package de.htwg.rs.config
 
 case class Config(apiUrl: String, apiToken: String)
 
-val DEFAULT_API_URL = "streaming-availability.p.rapidapi.com"
+val DEFAULT_API_URL = "http://localhost:3000"
 val DEFAULT_API_TOKEN = "***REMOVED***"
 
 def readConfigFromEnv(env: Map[String, String]): Config =
