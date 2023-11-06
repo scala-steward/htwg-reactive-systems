@@ -12,7 +12,7 @@ class ApiClient(
 ):
   def getCountries: Try[List[Country]] =
     for
-      response <- get(s"$host/countries", Map.empty)
+      response <- get("/countries", Map.empty)
       countries <- parseCountries(response.body)
     yield countries
 
@@ -31,20 +31,21 @@ class ApiClient(
     )
     if cursor.isDefined then params += ("cursor" -> cursor.get)
     // TODO: parse response
-    for response <- get(s"$host/changes", params)
+    for response <- get("/changes", params)
     yield response.body
 
   private def get(
-      url: String,
+      path: String,
       params: Map[String, String]
-  ): Try[HttpResponse[String]] = Try {
-    Http(url)
-      .header("X-RapidAPI-Key", token)
-      .header("X-RapidAPI-Host", host)
-      .method("GET")
-      .params(params)
-      .asString
-  }
+  ): Try[HttpResponse[String]] =
+    Try {
+      Http(s"${host.stripSuffix("/")}$path")
+        .header("X-RapidAPI-Key", token)
+        .header("X-RapidAPI-Host", host)
+        .method("GET")
+        .params(params)
+        .asString
+    }
 
 private def parseCountries(jsonString: String): Try[List[Country]] = Try {
   ujson

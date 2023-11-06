@@ -1,0 +1,699 @@
+{
+    "result": [
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697800997
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Spider",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81446275/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697800997
+                        }
+                    ]
+                },
+                "year": 2022,
+                "imdbId": "tt9611872",
+                "tmdbId": 1002644,
+                "originalTitle": "Spider",
+                "genres": [
+                    {
+                        "id": 27,
+                        "name": "Horror"
+                    }
+                ],
+                "directors": [
+                    "Desmon Heck"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697719513
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Chicken Run",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/60001287/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697719513
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://tv.apple.com/de/movie/chicken-run/umc.cmc.oorb0ak4pgdfn9m8gdl0k5nb",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": "DEU"
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "3.99",
+                                "currency": "EUR",
+                                "formatted": "3.99 EUR"
+                            },
+                            "availableSince": 1654622364
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://tv.apple.com/de/movie/chicken-run/umc.cmc.oorb0ak4pgdfn9m8gdl0k5nb",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": "DEU"
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "5.99",
+                                "currency": "EUR",
+                                "formatted": "5.99 EUR"
+                            },
+                            "availableSince": 1654622364
+                        }
+                    ]
+                },
+                "year": 2000,
+                "imdbId": "tt0120630",
+                "tmdbId": 7443,
+                "originalTitle": "Chicken Run",
+                "genres": [
+                    {
+                        "id": 16,
+                        "name": "Animation"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Adventure"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Nick Park",
+                    "Peter Lord"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697800684
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Camp Courage",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81706977/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697800684
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt29102426",
+                "tmdbId": 1182772,
+                "originalTitle": "Camp Courage",
+                "genres": [
+                    {
+                        "id": 99,
+                        "name": "Documentary"
+                    },
+                    {
+                        "id": 10752,
+                        "name": "War"
+                    }
+                ],
+                "directors": [
+                    "Max Lowe"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697798870
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Dream Girl 2",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81687159/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697798870
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt22086334",
+                "tmdbId": 1025067,
+                "originalTitle": "ड्रीम गर्ल 2",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    },
+                    {
+                        "id": 10749,
+                        "name": "Romance"
+                    }
+                ],
+                "directors": [
+                    "Raaj Shaandilyaa"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697735941
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Spy Kids: Armageddon",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81588091/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696915090
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt13978520",
+                "tmdbId": 790493,
+                "originalTitle": "Spy Kids: Armageddon",
+                "genres": [
+                    {
+                        "id": 28,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    },
+                    {
+                        "id": 10751,
+                        "name": "Family"
+                    }
+                ],
+                "directors": [
+                    "Robert Rodriguez"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697753915
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "For Your Love",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81411265/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1648575739
+                        }
+                    ]
+                },
+                "year": 2015,
+                "imdbId": "tt4898888",
+                "tmdbId": 352199,
+                "originalTitle": "Per amor vostro",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    }
+                ],
+                "directors": [
+                    "Giuseppe M. Gaudino"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697800988
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Trippin’ with the Kandasamys",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81662957/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697800988
+                        }
+                    ]
+                },
+                "year": 2021,
+                "imdbId": "tt14611368",
+                "tmdbId": 834500,
+                "originalTitle": "Trippin’ with the Kandasamys",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    },
+                    {
+                        "id": 10749,
+                        "name": "Romance"
+                    }
+                ],
+                "directors": [
+                    "Jayan Moodley"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697736337
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Jaane Jaan",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81586376/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1695820970
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt15748830",
+                "tmdbId": 950071,
+                "originalTitle": "जाने जां",
+                "genres": [
+                    {
+                        "id": 80,
+                        "name": "Crime"
+                    },
+                    {
+                        "id": 9648,
+                        "name": "Mystery"
+                    }
+                ],
+                "directors": [
+                    "Sujoy Ghosh"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697800818
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Last Stop Larrimah: Murder Down Under",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81716863/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697800818
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt26081866",
+                "tmdbId": 1073098,
+                "originalTitle": "Last Stop Larrimah: Murder Down Under",
+                "genres": [
+                    {
+                        "id": 99,
+                        "name": "Documentary"
+                    },
+                    {
+                        "id": 80,
+                        "name": "Crime"
+                    },
+                    {
+                        "id": 9648,
+                        "name": "Mystery"
+                    }
+                ],
+                "directors": [
+                    "Thomas Tancred"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697743238
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Chappelle's Home Team - Luenell: Town Business",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81516465/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696914949
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt29120220",
+                "tmdbId": 1181274,
+                "originalTitle": "Chappelle's Home Team - Luenell: Town Business",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Stan Lathan"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697735825
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Julia's Disappearance",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/70125557/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1648634725
+                        }
+                    ]
+                },
+                "year": 2009,
+                "imdbId": "tt1425926",
+                "tmdbId": 34088,
+                "originalTitle": "Giulias Verschwinden",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Christoph Schaub"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697800665
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "The Craigslist Killer",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/70208086/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697800665
+                        }
+                    ]
+                },
+                "year": 2011,
+                "imdbId": "tt1772373",
+                "tmdbId": 55680,
+                "originalTitle": "The Craigslist Killer",
+                "genres": [
+                    {
+                        "id": 80,
+                        "name": "Crime"
+                    },
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    }
+                ],
+                "directors": [
+                    "Stephen T. Kay"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697726870
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "What If",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81672418/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1694348871
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28634523",
+                "tmdbId": 1163055,
+                "originalTitle": "What If",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 10749,
+                        "name": "Romance"
+                    }
+                ],
+                "directors": [
+                    "Manny Palo"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697725485
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Love at First Sight",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81504327/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1694893977
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt13444014",
+                "tmdbId": 353577,
+                "originalTitle": "Love at First Sight",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 10749,
+                        "name": "Romance"
+                    }
+                ],
+                "directors": [
+                    "Vanessa Caswill"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697747050
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Love Is in the Air",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81674530/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696913158
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28073548",
+                "tmdbId": 1167725,
+                "originalTitle": "Love Is in the Air",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    },
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 10749,
+                        "name": "Romance"
+                    }
+                ],
+                "directors": [
+                    "Adrian Powers"
+                ]
+            }
+        }
+    ],
+    "hasMore": false,
+    "nextCursor": ""
+}

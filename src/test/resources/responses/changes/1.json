@@ -1,0 +1,2392 @@
+{
+    "result": [
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697585511
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Strawberry Shortcake and the Beast of Berry Bog",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81611032/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697585511
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt29389870",
+                "tmdbId": 1186402,
+                "originalTitle": "Strawberry Shortcake and the Beast of Berry Bog",
+                "genres": [
+                    {
+                        "id": 10751,
+                        "name": "Family"
+                    }
+                ],
+                "directors": [
+                    "Jim Miller"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697603967
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "The Oskars Fantasy",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81677015/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696913100
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28252817",
+                "tmdbId": 1135141,
+                "originalTitle": "Ang Pangarap Kong Oskars",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Jules Katanyag"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697609862
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Boyz n the Hood",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/328438/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697609862
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "rent",
+                            "quality": "uhd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0848NJ2FM/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "3.99",
+                                "currency": "EUR",
+                                "formatted": "3.99 EUR"
+                            },
+                            "availableSince": 1690422544
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "uhd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0848NJ2FM/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "9.99",
+                                "currency": "EUR",
+                                "formatted": "9.99 EUR"
+                            },
+                            "availableSince": 1690422544
+                        }
+                    ]
+                },
+                "year": 1991,
+                "imdbId": "tt0101507",
+                "tmdbId": 650,
+                "originalTitle": "Boyz n the Hood",
+                "genres": [
+                    {
+                        "id": 80,
+                        "name": "Crime"
+                    },
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    }
+                ],
+                "directors": [
+                    "John Singleton"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697659299
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Allegiant",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/80081226/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697659299
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://tv.apple.com/de/movie/die-bestimmung---allegiant/umc.cmc.4zws75almqewwxovlvdg30f92",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": "USA"
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": "DEU"
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "3.99",
+                                "currency": "EUR",
+                                "formatted": "3.99 EUR"
+                            },
+                            "availableSince": 1654452900
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://tv.apple.com/de/movie/die-bestimmung---allegiant/umc.cmc.4zws75almqewwxovlvdg30f92",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": "USA"
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": "DEU"
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "4.99",
+                                "currency": "EUR",
+                                "formatted": "4.99 EUR"
+                            },
+                            "availableSince": 1654452900
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "addon",
+                            "quality": "sd",
+                            "addon": "cineheartsde",
+                            "link": "https://www.amazon.de/gp/video/detail/B01CO5PQ16/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "availableSince": 1690337790
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B01CO5PQ16/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "3.99",
+                                "currency": "EUR",
+                                "formatted": "3.99 EUR"
+                            },
+                            "availableSince": 1690337790
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "rent",
+                            "quality": "sd",
+                            "link": "https://www.amazon.de/gp/video/detail/B01CO5PQ16/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "2.99",
+                                "currency": "EUR",
+                                "formatted": "2.99 EUR"
+                            },
+                            "availableSince": 1690337790
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B01CO5PQ16/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "7.99",
+                                "currency": "EUR",
+                                "formatted": "7.99 EUR"
+                            },
+                            "availableSince": 1690337790
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "sd",
+                            "link": "https://www.amazon.de/gp/video/detail/B01CO5PQ16/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "5.99",
+                                "currency": "EUR",
+                                "formatted": "5.99 EUR"
+                            },
+                            "availableSince": 1690337790
+                        },
+                        {
+                            "service": "wow",
+                            "streamingType": "addon",
+                            "addon": "serien",
+                            "link": "https://www.wowtv.de/streamen/schmerzfrei-ohne-arznei-das-placebo-experiment-2018/TF18270155",
+                            "audios": [
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "ger",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [],
+                            "leaving": 1706741940,
+                            "availableSince": 1662823330
+                        },
+                        {
+                            "service": "wow",
+                            "streamingType": "addon",
+                            "addon": "serien",
+                            "link": "https://www.wowtv.de/streamen/das-diat-experiment-im-namen-der-gesundheit-2018/TF18248473",
+                            "audios": [
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "ger",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [],
+                            "leaving": 1714514340,
+                            "availableSince": 1662823359
+                        }
+                    ]
+                },
+                "year": 2016,
+                "imdbId": "tt3410834",
+                "tmdbId": 262504,
+                "originalTitle": "Allegiant",
+                "genres": [
+                    {
+                        "id": 28,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Adventure"
+                    },
+                    {
+                        "id": 9648,
+                        "name": "Mystery"
+                    }
+                ],
+                "directors": [
+                    "Robert Schwentke"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697655240
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Poison",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81711973/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696910033
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28912885",
+                "tmdbId": 1172676,
+                "originalTitle": "Poison",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Wes Anderson"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697677071
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Keys to the Heart",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81702502/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696911069
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt29025883",
+                "tmdbId": 778277,
+                "originalTitle": "Keys to the Heart",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 10402,
+                        "name": "Music"
+                    }
+                ],
+                "directors": [
+                    "Kerwin Go"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697622553
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "The Darkness Within La Luz del Mundo",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81404182/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696913290
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28657881",
+                "tmdbId": 1168814,
+                "originalTitle": "La oscuridad de la Luz del Mundo",
+                "genres": [
+                    {
+                        "id": 99,
+                        "name": "Documentary"
+                    },
+                    {
+                        "id": 80,
+                        "name": "Crime"
+                    }
+                ],
+                "directors": [
+                    "Carlos Pérez Osorio"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697669449
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Kasargold",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81713648/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697669449
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt22309174",
+                "tmdbId": 1028730,
+                "originalTitle": "കാസർഗോൾഡ്",
+                "genres": [
+                    {
+                        "id": 28,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 53,
+                        "name": "Thriller"
+                    }
+                ],
+                "directors": [
+                    "Mridul Nair"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697636615
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Whitney Houston: I Wanna Dance with Somebody",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "uhd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0B8JWRMX6/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "fra",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "hin",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "ita",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "jpn",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "spa",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                },
+                                {
+                                    "locale": {
+                                        "language": "fra",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ita",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "jpn",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "nld",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "spa",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "swe",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "11.99",
+                                "currency": "EUR",
+                                "formatted": "11.99 EUR"
+                            },
+                            "availableSince": 1690391476
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "rent",
+                            "quality": "uhd",
+                            "link": "https://tv.apple.com/de/movie/i-wanna-dance-with-somebody/umc.cmc.2oc9sezfme7qrgun2e4lxda8o",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "fra",
+                                    "region": "FRA"
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "cmn",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "dan",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": "DEU"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": "GBR"
+                                    },
+                                    "closedCaptions": true
+                                },
+                                {
+                                    "locale": {
+                                        "language": "fin",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "fra",
+                                        "region": "FRA"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ita",
+                                        "region": "ITA"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "jpn",
+                                        "region": "JPN"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "kor",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "nld",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "nor",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "por",
+                                        "region": "PRT"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "rus",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "spa",
+                                        "region": "ESP"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "swe",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "tha",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ukr",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "vie",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "yue",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "4.99",
+                                "currency": "EUR",
+                                "formatted": "4.99 EUR"
+                            },
+                            "availableSince": 1678950470
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "buy",
+                            "quality": "uhd",
+                            "link": "https://tv.apple.com/de/movie/i-wanna-dance-with-somebody/umc.cmc.2oc9sezfme7qrgun2e4lxda8o",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "fra",
+                                    "region": "FRA"
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "cmn",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "dan",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": "DEU"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": "GBR"
+                                    },
+                                    "closedCaptions": true
+                                },
+                                {
+                                    "locale": {
+                                        "language": "fin",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "fra",
+                                        "region": "FRA"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ita",
+                                        "region": "ITA"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "jpn",
+                                        "region": "JPN"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "kor",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "nld",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "nor",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "por",
+                                        "region": "PRT"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "rus",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "spa",
+                                        "region": "ESP"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "swe",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "tha",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ukr",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "vie",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "yue",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "13.99",
+                                "currency": "EUR",
+                                "formatted": "13.99 EUR"
+                            },
+                            "availableSince": 1678950470
+                        },
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81672780/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1688427180
+                        }
+                    ]
+                },
+                "year": 2022,
+                "imdbId": "tt12193804",
+                "tmdbId": 696157,
+                "originalTitle": "Whitney Houston: I Wanna Dance with Somebody",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 10402,
+                        "name": "Music"
+                    }
+                ],
+                "directors": [
+                    "Kasi Lemmons"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697626997
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Once Upon a Star",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81567563/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697626997
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt22696288",
+                "tmdbId": 1034336,
+                "originalTitle": "มนต์รักนักพากย์",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 36,
+                        "name": "History"
+                    }
+                ],
+                "directors": [
+                    "Nonzee Nimibutr"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697663626
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Forgotten Love",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81516046/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696912900
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt26596953",
+                "tmdbId": 1081676,
+                "originalTitle": "Znachor",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 10749,
+                        "name": "Romance"
+                    }
+                ],
+                "directors": [
+                    "Michał Gazda"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697603114
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Yoo Byung Jae: Discomfort Zone",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/80223582/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1648598405
+                        }
+                    ]
+                },
+                "year": 2018,
+                "imdbId": "tt8948740",
+                "tmdbId": 542691,
+                "originalTitle": "유병재: B의 농담",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Chung Yeong-joon"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697604060
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Todd Glass: Act Happy",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/80208684/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1648586843
+                        }
+                    ]
+                },
+                "year": 2018,
+                "imdbId": "tt7752142",
+                "tmdbId": 493201,
+                "originalTitle": "Todd Glass: Act Happy",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Scott Moran"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697581885
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "How to Deal with a Heartbreak",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81590644/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696915324
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28765467",
+                "tmdbId": 1124624,
+                "originalTitle": "Soltera codiciada 2",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Joanna Lombardi"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697617722
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Scout's Honor: The Secret Files of the Boy Scouts of America",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81477233/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1694243323
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28660814",
+                "tmdbId": 1165111,
+                "originalTitle": "Scout's Honor: The Secret Files of the Boy Scouts of America",
+                "genres": [
+                    {
+                        "id": 99,
+                        "name": "Documentary"
+                    },
+                    {
+                        "id": 80,
+                        "name": "Crime"
+                    }
+                ],
+                "directors": [
+                    "Brian Knappenberger"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697622412
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Kolaiyuthir Kaalam",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81258623/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1648971504
+                        }
+                    ]
+                },
+                "year": 2019,
+                "imdbId": "tt6280858",
+                "tmdbId": 496029,
+                "originalTitle": "கொலையுதிர் காலம்",
+                "genres": [
+                    {
+                        "id": 53,
+                        "name": "Thriller"
+                    }
+                ],
+                "directors": [
+                    "Chakri Toleti"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697638486
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Spy Kids 2: The Island of Lost Dreams",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0B8M8NMHN/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "9.99",
+                                "currency": "EUR",
+                                "formatted": "9.99 EUR"
+                            },
+                            "availableSince": 1690347907
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "sd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0B8M8NMHN/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "7.99",
+                                "currency": "EUR",
+                                "formatted": "7.99 EUR"
+                            },
+                            "availableSince": 1690347907
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B00FZHL0PM/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "4.99",
+                                "currency": "EUR",
+                                "formatted": "4.99 EUR"
+                            },
+                            "availableSince": 1690354107
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B00FZHL0PM/ref=atv_dp?language=en",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "9.99",
+                                "currency": "EUR",
+                                "formatted": "9.99 EUR"
+                            },
+                            "availableSince": 1690354107
+                        },
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/60023618/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697638486
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0B8M8NMHN/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "4.99",
+                                "currency": "EUR",
+                                "formatted": "4.99 EUR"
+                            },
+                            "availableSince": 1690347907
+                        }
+                    ]
+                },
+                "year": 2002,
+                "imdbId": "tt0287717",
+                "tmdbId": 9488,
+                "originalTitle": "Spy Kids 2: The Island of Lost Dreams",
+                "genres": [
+                    {
+                        "id": 28,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Adventure"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Robert Rodriguez"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697716099
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Spy Kids",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "sd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0BHXBYFMX/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "7.99",
+                                "currency": "EUR",
+                                "formatted": "7.99 EUR"
+                            },
+                            "availableSince": 1690353936
+                        },
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/60020916/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697716099
+                        },
+                        {
+                            "service": "wow",
+                            "streamingType": "addon",
+                            "addon": "filme",
+                            "link": "https://www.wowtv.de/streamen/spy-kids-2000/TF1671858",
+                            "audios": [
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "ger",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [],
+                            "leaving": 1734303540,
+                            "availableSince": 1672455863
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://tv.apple.com/de/movie/spy-kids/umc.cmc.446wylnibtaa32i84yoip4rl1",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "ara",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "bul",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ces",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "cmn",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ell",
+                                        "region": "GRC"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "kor",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "por",
+                                        "region": "PRT"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ron",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "rus",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "spa",
+                                        "region": "ESP"
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "3.99",
+                                "currency": "EUR",
+                                "formatted": "3.99 EUR"
+                            },
+                            "availableSince": 1669075438
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://tv.apple.com/de/movie/spy-kids/umc.cmc.446wylnibtaa32i84yoip4rl1",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "ara",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "bul",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ces",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "cmn",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ell",
+                                        "region": "GRC"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "kor",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "por",
+                                        "region": "PRT"
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "ron",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "rus",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "spa",
+                                        "region": "ESP"
+                                    },
+                                    "closedCaptions": false
+                                }
+                            ],
+                            "price": {
+                                "amount": "8.99",
+                                "currency": "EUR",
+                                "formatted": "8.99 EUR"
+                            },
+                            "availableSince": 1669075438
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0BHXBYFMX/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "3.99",
+                                "currency": "EUR",
+                                "formatted": "3.99 EUR"
+                            },
+                            "availableSince": 1690353936
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B0BHXBYFMX/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": false
+                                },
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "8.99",
+                                "currency": "EUR",
+                                "formatted": "8.99 EUR"
+                            },
+                            "availableSince": 1690353936
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "rent",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B09HYQ3438/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "3.99",
+                                "currency": "EUR",
+                                "formatted": "3.99 EUR"
+                            },
+                            "availableSince": 1690326277
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://www.amazon.de/gp/video/detail/B09HYQ3438/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "8.99",
+                                "currency": "EUR",
+                                "formatted": "8.99 EUR"
+                            },
+                            "availableSince": 1690326277
+                        },
+                        {
+                            "service": "prime",
+                            "streamingType": "buy",
+                            "quality": "sd",
+                            "link": "https://www.amazon.de/gp/video/detail/B09HYQ3438/ref=atv_dp",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": ""
+                                },
+                                {
+                                    "language": "eng",
+                                    "region": ""
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "eng",
+                                        "region": ""
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "7.99",
+                                "currency": "EUR",
+                                "formatted": "7.99 EUR"
+                            },
+                            "availableSince": 1690326277
+                        }
+                    ]
+                },
+                "year": 2001,
+                "imdbId": "tt0227538",
+                "tmdbId": 10054,
+                "originalTitle": "Spy Kids",
+                "genres": [
+                    {
+                        "id": 28,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Adventure"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Robert Rodriguez"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697687510
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Beth Stelling: If You Didn't Want Me Then",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81713592/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696913498
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28997186",
+                "tmdbId": 1185401,
+                "originalTitle": "Beth Stelling: If You Didn't Want Me Then",
+                "genres": [
+                    {
+                        "id": 99,
+                        "name": "Documentary"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Mo Welch"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697679130
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Rosa Peral's Tapes",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81674394/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1694348866
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28687398",
+                "tmdbId": 1167520,
+                "originalTitle": "Las cintas de Rosa Peral",
+                "genres": [
+                    {
+                        "id": 99,
+                        "name": "Documentary"
+                    },
+                    {
+                        "id": 80,
+                        "name": "Crime"
+                    }
+                ],
+                "directors": [
+                    "Carles Vidal Novellas",
+                    "Manuel Perez"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697712065
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "The Great Seduction",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81552473/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1693802750
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt14542504",
+                "tmdbId": 1159086,
+                "originalTitle": "La gran seducción",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Celso R. García"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697586488
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "SDU: Sex Duties Unit",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81030200/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1649077177
+                        }
+                    ]
+                },
+                "year": 2013,
+                "imdbId": "tt3044248",
+                "tmdbId": 210498,
+                "originalTitle": "飛虎出征",
+                "genres": [
+                    {
+                        "id": 28,
+                        "name": "Action"
+                    },
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Gary Mak Wing-Lun"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697662362
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Race to the Summit",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81517219/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696911451
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28995566",
+                "tmdbId": 1174725,
+                "originalTitle": "Duell am Abgrund",
+                "genres": [
+                    {
+                        "id": 99,
+                        "name": "Documentary"
+                    },
+                    {
+                        "id": 12,
+                        "name": "Adventure"
+                    }
+                ],
+                "directors": [
+                    "Nicholas de Taranto",
+                    "Götz Werner"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697652073
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "The Rat Catcher",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81711970/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1696913195
+                        }
+                    ]
+                },
+                "year": 2023,
+                "imdbId": "tt28912858",
+                "tmdbId": 1172674,
+                "originalTitle": "The Rat Catcher",
+                "genres": [
+                    {
+                        "id": 35,
+                        "name": "Comedy"
+                    }
+                ],
+                "directors": [
+                    "Wes Anderson"
+                ]
+            }
+        },
+        {
+            "changes": [
+                {
+                    "service": "netflix",
+                    "streamingType": "subscription",
+                    "time": 1697592301
+                }
+            ],
+            "show": {
+                "type": "movie",
+                "title": "Resistance",
+                "streamingInfo": {
+                    "de": [
+                        {
+                            "service": "netflix",
+                            "streamingType": "subscription",
+                            "link": "https://www.netflix.com/title/81243263/",
+                            "audios": [],
+                            "subtitles": [],
+                            "availableSince": 1697592301
+                        },
+                        {
+                            "service": "apple",
+                            "streamingType": "buy",
+                            "quality": "hd",
+                            "link": "https://tv.apple.com/de/movie/resistance---widerstand/umc.cmc.po1q4fivguh58wimllxrnvbo",
+                            "audios": [
+                                {
+                                    "language": "deu",
+                                    "region": "DEU"
+                                }
+                            ],
+                            "subtitles": [
+                                {
+                                    "locale": {
+                                        "language": "deu",
+                                        "region": "DEU"
+                                    },
+                                    "closedCaptions": true
+                                }
+                            ],
+                            "price": {
+                                "amount": "13.99",
+                                "currency": "EUR",
+                                "formatted": "13.99 EUR"
+                            },
+                            "availableSince": 1652075063
+                        }
+                    ]
+                },
+                "year": 2020,
+                "imdbId": "tt6914122",
+                "tmdbId": 491926,
+                "originalTitle": "Resistance",
+                "genres": [
+                    {
+                        "id": 18,
+                        "name": "Drama"
+                    },
+                    {
+                        "id": 36,
+                        "name": "History"
+                    }
+                ],
+                "directors": [
+                    "Jonathan Jakubowicz"
+                ]
+            }
+        }
+    ],
+    "hasMore": true,
+    "nextCursor": "1697719513:156119400"
+}
