@@ -23,7 +23,7 @@ jobs:
           curl -sL "https://github.com/sbt/sbt/releases/download/v1.9.6/sbt-1.9.6.tgz" | tar -xz -C $RUNNER_TOOL_CACHE -f -
           echo "##vso[task.prependpath]$RUNNER_TOOL_CACHE/sbt/1.9.6/x64"
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 19.1.0
       - name: Install xmlstarlet
