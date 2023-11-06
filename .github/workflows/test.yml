@@ -19,5 +19,14 @@ jobs:
           distribution: temurin
           java-version: 17
           cache: sbt
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19.1.0
+      - name: Install and start sidecar
+        run: |
+          cd sidecar 
+          npm install
+          npm run start &
       - name: Build and test
         run: sbt -v +test

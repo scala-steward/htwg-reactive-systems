@@ -1,0 +1,93 @@
+name: Code Coverage Report
+
+on:
+  push:
+
+permissions:
+  contents: write
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: sbt
+      - name: Install sbt
+        run: |
+          curl -sL "https://github.com/sbt/sbt/releases/download/v1.9.6/sbt-1.9.6.tgz" | tar -xz -C $RUNNER_TOOL_CACHE -f -
+          echo "##vso[task.prependpath]$RUNNER_TOOL_CACHE/sbt/1.9.6/x64"
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19.1.0
+      - name: Install xmlstarlet
+        run: sudo apt-get -y install xmlstarlet
+      - name: Install and start sidecar
+        run: |
+          cd sidecar 
+          npm install
+          npm run start &
+
+      - name: Build and Test
+        run: sbt clean coverage test
+
+      - name: Generate Coverage Report
+        run: sbt coverageReport
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: target/scala-3.3.1/scoverage-report
+
+      - name: Append Coverage to README
+        run: |
+          STATEMENT_COVERAGE=$( xmlstarlet sel -t -v "/scoverage/@statement-rate" target/scala-3.3.1/scoverage-report/scoverage.xml)
+          BRANCH_COVERAGE=$( xmlstarlet sel -t -v "/scoverage/@branch-rate" target/scala-3.3.1/scoverage-report/scoverage.xml)
+          echo "Statement Coverage: $STATEMENT_COVERAGE"
+          echo "Branch Coverage: $BRANCH_COVERAGE"
+          sed "s/Statement Coverage: [0-9.]\+%/Statement Coverage: $STATEMENT_COVERAGE%/" -i README.md
+          sed "s/Branch Coverage: [0-9.]\+%/Branch Coverage: $BRANCH_COVERAGE%/" -i README.md
+          echo "COVERAGE_STATEMENT=$STATEMENT_COVERAGE" >> $GITHUB_ENV
+          echo "COVERAGE_BRANCH=$BRANCH_COVERAGE" >> $GITHUB_ENV
+          echo "Readme:"
+          cat README.md
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "update code coverage"  --no-verify
+          git push    
+        if: success()
+      - name: Create Statement Badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        if: github.ref == 'refs/heads/main' # only create badge for main branch
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 42475f58c90957ef74d0e9dbc805d309
+          filename: reactive_system_statment_coverage__main.json
+          label: Statement Coverage
+          message: ${{ env.COVERAGE_STATEMENT }}%
+          minColorRange: 10
+          maxColorRange: 90
+          valColorRange: 50
+          namedLogo: Scala
+      - name: Create Branch Badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
+        if: github.ref == 'refs/heads/main' # only create badge for main branch
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: d7c86228b1156b7e5a074ce8685c6c39
+          filename: reactive_system_branch_coverage__main.json
+          label: Branch Coverage
+          message: ${{ env.COVERAGE_BRANCH }}%
+          minColorRange: 10
+          maxColorRange: 90
+          namedLogo: Scala
