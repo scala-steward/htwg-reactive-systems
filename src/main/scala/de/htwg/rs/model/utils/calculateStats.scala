@@ -96,12 +96,12 @@ def getCountChanges(
   )
   if changes.isSuccess then
     val changesSucess = changes.get
-    val changesJson = ujson.read(changesSucess)("result")
+    val changesJson = changes.get.result
     val changesObje = changesJson.arr
     val changesCount = changesObje.size
-    val hasMore = ujson.read(changesSucess)("hasMore").bool
+    val hasMore = changes.get.hasMore
     if hasMore then
-      val nextCursor = ujson.read(changesSucess)("nextCursor").str
+      val nextCursor = changes.get.nextCursor
       val changesCountNextPage =
         getCountChanges(
           client,
@@ -109,7 +109,7 @@ def getCountChanges(
           service,
           target_type,
           country_code,
-          Some(nextCursor)
+          nextCursor
         )
       if changesCountNextPage.isSuccess then
         val changesCountNextPageLeft = changesCountNextPage.get

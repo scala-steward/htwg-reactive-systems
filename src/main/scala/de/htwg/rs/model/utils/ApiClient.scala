@@ -2,7 +2,7 @@ package de.htwg.rs.model.utils
 
 import de.htwg.rs.model.models.{ChangeType, Country, ServiceChange, TargetType}
 
-import scala.util.Try
+import scala.util.{Failure, Success, Try}
 
 import scalaj.http.{Http, HttpResponse}
 
@@ -13,8 +13,8 @@ class ApiClient(
   def getCountries: Try[List[Country]] =
     for
       response <- get("/countries", Map.empty)
-      countries <- parseCountries(response.body)
-    yield countries
+      apiResponse <- ApiResponse.parse(response.body, parseCountries)
+    yield apiResponse.result
 
   def getChanges(
       changeType: ChangeType,
@@ -22,17 +22,18 @@ class ApiClient(
       targetType: TargetType,
       countryCode: String,
       cursor: Option[String]
-  ): Try[String] =
-    var params: Map[String, String] = Map[String, String](
+  ): Try[ApiResponse[ujson.Value]] =
+    var params: Map[String, String] = Map(
       "change_type" -> changeType.toString.toLowerCase(),
       "services" -> service.toString.toLowerCase(),
       "target_type" -> targetType.toString.toLowerCase(),
       "country" -> countryCode
     )
     if cursor.isDefined then params += ("cursor" -> cursor.get)
-    // TODO: parse response
-    for response <- get("/changes", params)
-    yield response.body
+    for
+      response <- get("/changes", params)
+      apiResponse <- ApiResponse.parse(response.body, Success(_))
+    yield apiResponse
 
   private def get(
       path: String,
@@ -47,16 +48,33 @@ class ApiClient(
         .asString
     }
 
-private def parseCountries(jsonString: String): Try[List[Country]] = Try {
-  ujson
-    .read(jsonString)("result")
-    .obj
-    .map { case (key, value) =>
-      val services = value("services")
-      val servicesKeys = services.obj.keys.toList
-      val countryName = value("name")
-      val servicesRaw = value("services")
-      Country(countryName.str, key, servicesRaw, servicesKeys)
-    }
-    .toList
+case class ApiResponse[T](
+    result: T,
+    hasMore: Boolean,
+    nextCursor: Option[String]
+)
+
+private object ApiResponse:
+  def parse[T](
+      json: String,
+      parser: ujson.Value => Try[T]
+  ): Try[ApiResponse[T]] = Try {
+    val value = ujson.read(json)
+    val hasMore = value.obj.get("hasMore").exists(_.bool)
+    val nextCursor = value.obj.get("nextCursor").map(_.str)
+    val result = value("result")
+
+    parser(result) match
+      case Success(parsed) => ApiResponse(parsed, hasMore, nextCursor)
+      case Failure(ex)     => throw ex
+  }
+
+private def parseCountries(value: ujson.Value): Try[List[Country]] = Try {
+  value.obj.map { case (key, value) =>
+    val services = value("services")
+    val servicesKeys = services.obj.keys.toList
+    val countryName = value("name")
+    val servicesRaw = value("services")
+    Country(countryName.str, key, servicesRaw, servicesKeys)
+  }.toList
 }
