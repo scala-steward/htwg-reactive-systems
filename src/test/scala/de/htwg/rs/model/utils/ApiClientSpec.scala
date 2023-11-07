@@ -55,7 +55,7 @@ class ApiClientSpec extends AnyWordSpec with Matchers:
     }
 
     "calling getChanges" should {
-      "return a list of changes" in {
+      "return a list of changes with a next cursor" in {
         val mockResponse = new MockResponse()
         mockResponse.setResponseCode(200)
         mockResponse.setBody(
@@ -78,6 +78,32 @@ class ApiClientSpec extends AnyWordSpec with Matchers:
         )
 
         result.isSuccess shouldBe true
+        result.get.hasMore shouldBe true
+        result.get.nextCursor shouldBe Some("1697719513:156119400")
+      }
+
+      "return no next cursor on the last page" in {
+        val mockResponse = new MockResponse()
+        mockResponse.setResponseCode(200)
+        mockResponse.setBody(
+          Source.fromResource("responses/changes/2.json").mkString
+        )
+
+        val result = withMockApi(
+          pre = server => server.enqueue(mockResponse),
+          block = apiClient =>
+            apiClient.getChanges(
+              ChangeType.New,
+              ServiceChange.Netflix,
+              TargetType.Show,
+              "de",
+              Some("1697719513:156119400")
+            ),
+        )
+
+        result.isSuccess shouldBe true
+        result.get.hasMore shouldBe false
+        result.get.nextCursor shouldBe None
       }
     }
   }

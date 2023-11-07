@@ -61,7 +61,10 @@ private object ApiResponse:
   ): Try[ApiResponse[T]] = Try {
     val value = ujson.read(json)
     val hasMore = value.obj.get("hasMore").exists(_.bool)
-    val nextCursor = value.obj.get("nextCursor").map(_.str)
+    val nextCursor = value.obj
+      .get("nextCursor")
+      .map(_.str)
+      .flatMap(cursor => if cursor.isEmpty then None else Some(cursor))
     val result = value("result")
 
     parser(result) match
