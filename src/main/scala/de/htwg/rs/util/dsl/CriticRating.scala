@@ -2,6 +2,11 @@ package de.htwg.rs.util.dsl
 
 import java.time.LocalDate
 
+/** Movie represents a movie. */
+case class Movie(title: String):
+  /** Returns a CriticRating with the given rating. */
+  def rated(rating: Int): CriticRating = CriticRating(title, rating)
+
 /** CriticRating represents a rating of a movie by a critic. */
 case class CriticRating(
     movieName: String,
@@ -17,6 +22,7 @@ case class CriticRating(
     val localDate = LocalDate.parse(date)
     copy(date = Some(localDate))
 
-extension (movieName: String)
+extension (movieTitle: String)
   /** Returns a CriticRating with the given rating. */
-  def rated(rating: Int): CriticRating = CriticRating(movieName, rating)
+  def rated(rating: Int): CriticRating =
+    Movie(movieTitle).rated(rating)

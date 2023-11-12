@@ -9,6 +9,14 @@ import org.scalatest.wordspec.AnyWordSpec
 
 class CriticRatingSpec extends AnyWordSpec with Matchers:
 
+  "Movie" should {
+
+    "allow creating a movie with a title" in {
+      val movie = Movie("The Seventh Seal")
+      movie.title should be("The Seventh Seal")
+    }
+  }
+
   "CriticRating" should {
 
     "allow creating a rating with a critic and date" in {
