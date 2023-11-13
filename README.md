@@ -5,7 +5,7 @@
 ### Install Pre-Commit Hook
 
 ```bash
-cp pre-commit.sh .git/hooks/pre-commit
+cp scripts/pre-commit.sh .git/hooks/pre-commit
 ```
 
 ## Coverage
