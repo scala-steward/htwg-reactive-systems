@@ -1,6 +1,6 @@
 package de.htwg.rs
 
-import de.htwg.rs.config.readConfigFromEnv
+import de.htwg.rs.config.Config
 import de.htwg.rs.controller.App
 import de.htwg.rs.model.models.{ChangeType, TargetType}
 import de.htwg.rs.model.utils.{getCountChangesForEveryService, ApiClient}
@@ -14,7 +14,7 @@ import tui.crossterm.CrosstermJni
 
 object Scala:
   def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
-    val apiClient = readConfigFromEnv(sys.env) match
+    val apiClient = Config.fromEnv(sys.env) match
       case Right(cfg) => ApiClient(token = cfg.apiToken, host = cfg.apiUrl)
       case Left(error) =>
         println(s"Error reading config: $error")
