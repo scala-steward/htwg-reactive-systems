@@ -4,6 +4,7 @@ import scala.collection.mutable
 
 import tui.widgets.ListWidget
 
+/** A list of items with a state to keep track of the selected item. */
 case class StatefulList[T](
     state: ListWidget.State,
     items: mutable.ArrayDeque[T]
