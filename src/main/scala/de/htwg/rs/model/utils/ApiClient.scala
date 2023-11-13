@@ -6,10 +6,7 @@ import scala.util.{Failure, Success, Try}
 
 import scalaj.http.{Http, HttpResponse}
 
-class ApiClient(
-    token: String,
-    host: String = "streaming-availability.p.rapidapi.com"
-):
+class ApiClient(token: String, host: String):
   def getCountries: Try[List[Country]] =
     for
       response <- get("/countries", Map.empty)

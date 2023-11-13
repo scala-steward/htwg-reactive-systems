@@ -7,14 +7,19 @@ import de.htwg.rs.model.utils.{getCountChangesForEveryService, ApiClient}
 import de.htwg.rs.view.ui
 
 import java.time.{Duration, Instant}
+import scala.sys.exit
 
 import tui.*
 import tui.crossterm.CrosstermJni
 
 object Scala:
   def main(args: Array[String]): Unit = withTerminal { (jni, terminal) =>
-    val config = readConfigFromEnv(sys.env)
-    val apiClient = ApiClient(token = config.apiToken, host = config.apiUrl)
+    val apiClient = readConfigFromEnv(sys.env) match
+      case Right(cfg) => ApiClient(token = cfg.apiToken, host = cfg.apiUrl)
+      case Left(error) =>
+        println(s"Error reading config: $error")
+        return
+
     // create app and run it
     val tickRate = Duration.ofMillis(250)
     // getting countries
