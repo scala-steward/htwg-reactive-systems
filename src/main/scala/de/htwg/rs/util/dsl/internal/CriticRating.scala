@@ -1,4 +1,4 @@
-package de.htwg.rs.util.dsl
+package de.htwg.rs.util.dsl.internal
 
 import java.time.LocalDate
 

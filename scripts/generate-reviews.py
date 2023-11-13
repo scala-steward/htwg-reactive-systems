@@ -29,5 +29,5 @@ for _ in range(1000):
     review_date = random.choice(dates)
 
     # Format and print the example data
-    example_data = f'"{movie_name}" rated ({rating}, Stars) by "{reviewer}" on "{review_date.strftime("%B %d, %Y")}"'
+    example_data = f'"{movie_name}" rated {rating} Stars by "{reviewer}" on "{review_date.strftime("%Y-%m-%d")}"'
     print(example_data)

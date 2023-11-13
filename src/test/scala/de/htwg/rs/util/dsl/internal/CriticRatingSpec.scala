@@ -1,7 +1,7 @@
-package de.htwg.rs.util.dsl
+package de.htwg.rs.util.dsl.internal
 
 import de.htwg.rs.util.dsl.*
-import de.htwg.rs.util.dsl.RatingCategory.{%, Stars}
+import de.htwg.rs.util.dsl.internal.RatingCategory.{%, Stars}
 
 import java.time.LocalDate
 
