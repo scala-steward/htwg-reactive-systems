@@ -15,7 +15,7 @@ class ConfigSpec extends AnyWordSpec with Matchers:
       val configResult = readConfigFromEnv(env)
 
       configResult shouldBe a[Right[_, _]]
-      val Right(config) = configResult
+      val Right(config) = configResult: @unchecked
       config.apiUrl should be("example.com")
       config.apiToken should be("secret_token")
     }
@@ -25,7 +25,7 @@ class ConfigSpec extends AnyWordSpec with Matchers:
       val configResult = readConfigFromEnv(env)
 
       configResult shouldBe a[Left[_, _]]
-      val Left(errorMessage) = configResult
+      val Left(errorMessage) = configResult: @unchecked
       errorMessage should include("API_URL not set")
     }
 
@@ -34,7 +34,7 @@ class ConfigSpec extends AnyWordSpec with Matchers:
       val configResult = readConfigFromEnv(env)
 
       configResult shouldBe a[Left[_, _]]
-      val Left(errorMessage) = configResult
+      val Left(errorMessage) = configResult: @unchecked
       errorMessage should include("API_TOKEN not set")
     }
 
@@ -43,7 +43,7 @@ class ConfigSpec extends AnyWordSpec with Matchers:
       val configResult = readConfigFromEnv(env)
 
       configResult shouldBe a[Left[_, _]]
-      val Left(errorMessage) = configResult
+      val Left(errorMessage) = configResult: @unchecked
       errorMessage should include("API_URL not set")
     }
   }
