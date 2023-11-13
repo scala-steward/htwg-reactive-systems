@@ -5,12 +5,14 @@ import java.time.LocalDate
 /** Movie represents a movie. */
 case class Movie(title: String):
   /** Returns a CriticRating with the given rating. */
-  def rated(rating: Int): CriticRating = CriticRating(title, rating)
+  def rated(rating: Int, category: RatingCategory): CriticRating =
+    CriticRating(title, rating, category)
 
 /** CriticRating represents a rating of a movie by a critic. */
 case class CriticRating(
     movieName: String,
     rating: Int,
+    category: RatingCategory,
     critic: Option[String] = None,
     date: Option[LocalDate] = None
 ):
@@ -22,7 +24,13 @@ case class CriticRating(
     val localDate = LocalDate.parse(date)
     copy(date = Some(localDate))
 
+enum RatingCategory:
+  case Stars, %
+
 extension (movieTitle: String)
   /** Returns a CriticRating with the given rating. */
-  def rated(rating: Int): CriticRating =
-    Movie(movieTitle).rated(rating)
+  def rated(
+      rating: Int,
+      category: RatingCategory = RatingCategory.Stars
+  ): CriticRating =
+    Movie(movieTitle).rated(rating, category)

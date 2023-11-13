@@ -1,6 +1,7 @@
 package de.htwg.rs.util.dsl
 
 import de.htwg.rs.util.dsl.*
+import de.htwg.rs.util.dsl.RatingCategory.{%, Stars}
 
 import java.time.LocalDate
 
@@ -19,26 +20,33 @@ class CriticRatingSpec extends AnyWordSpec with Matchers:
 
   "CriticRating" should {
 
-    "allow creating a rating with a critic and date" in {
-      val rating = "The Seventh Seal" rated 5 by "Roger Ebert" on "2000-04-16"
+    "allow creating a star-rating with a critic and date" in {
+      val rating =
+        "The Seventh Seal" rated (5, Stars) by "Roger Ebert" on "2000-04-16"
+
       rating.movieName should be("The Seventh Seal")
       rating.rating should be(5)
+      rating.category should be(Stars)
       rating.critic should contain("Roger Ebert")
       rating.date should contain(LocalDate.of(2000, 4, 16))
     }
 
-    "allow creating a rating with a critic" in {
-      val rating = "The Seventh Seal" rated 5 by "Roger Ebert"
+    "allow creating a percentage-rating with a critic" in {
+      val rating = "The Seventh Seal" rated (80, %) by "Roger Ebert"
+
       rating.movieName should be("The Seventh Seal")
-      rating.rating should be(5)
+      rating.rating should be(80)
+      rating.category should be(%)
       rating.critic should contain("Roger Ebert")
       rating.date should be(empty)
     }
 
-    "allow creating a rating with a date" in {
+    "allow default-creating a rating with a date" in {
       val rating = "The Seventh Seal" rated 5 on "2000-04-16"
+
       rating.movieName should be("The Seventh Seal")
       rating.rating should be(5)
+      rating.category should be(Stars)
       rating.critic should be(empty)
       rating.date should contain(LocalDate.of(2000, 4, 16))
     }
@@ -47,6 +55,7 @@ class CriticRatingSpec extends AnyWordSpec with Matchers:
       val rating = "The Seventh Seal" rated 5
       rating.movieName should be("The Seventh Seal")
       rating.rating should be(5)
+      rating.category should be(Stars)
       rating.critic should be(empty)
       rating.date should be(empty)
     }
