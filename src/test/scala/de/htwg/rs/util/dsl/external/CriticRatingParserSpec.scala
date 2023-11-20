@@ -12,7 +12,7 @@ class CriticRatingParserSpec extends AnyWordSpec with Matchers:
 
   "ReviewParser" when {
     "parsing a valid review" should {
-      "successfully parse and return a Review object" in {
+      "successfully parse a star review" in {
         val input =
           """ "Movie Title" rated 5 Stars by "John Doe" on "2023-01-15" """
         val result = CriticRatingParser.parse(input)
@@ -21,6 +21,20 @@ class CriticRatingParserSpec extends AnyWordSpec with Matchers:
           "Movie Title",
           5,
           RatingCategory.Stars,
+          Some("John Doe"),
+          Some(LocalDate.of(2023, 1, 15))
+        )
+      }
+
+      "successfully parse a percentage review" in {
+        val input =
+          """ "Movie Title" rated 95% by "John Doe" on "2023-01-15" """
+        val result = CriticRatingParser.parse(input)
+        result.successful shouldBe true
+        result.get.head shouldBe CriticRating(
+          "Movie Title",
+          95,
+          RatingCategory.%,
           Some("John Doe"),
           Some(LocalDate.of(2023, 1, 15))
         )
@@ -103,7 +117,7 @@ class CriticRatingParserSpec extends AnyWordSpec with Matchers:
         val result = CriticRatingParser.parse(input)
         result.successful shouldBe true
         result.get.size shouldBe 1000
-        result.get.head.movieName shouldBe "The Dark Knight"
+        result.get.head.movieName shouldBe "The Shawshank Redemption"
       }
     }
   }

@@ -10,9 +10,11 @@ object CriticRatingParser extends JavaTokenParsers:
     s.substring(1, s.length - 1)
   }
 
-  private def rating: Parser[Int] = "rated" ~> wholeNumber <~ "Stars" ^^ {
-    _.toInt
-  }
+  private def rating: Parser[(Int, RatingCategory)] =
+    "rated" ~> wholeNumber ~ ("Stars" | "%") ^^ {
+      case rate ~ "Stars" => (rate.toInt, RatingCategory.Stars)
+      case rate ~ "%"     => (rate.toInt, RatingCategory.%)
+    }
 
   private def reviewAuthor: Parser[String] = "by" ~> stringLiteral ^^ { s =>
     s.substring(1, s.length - 1)
@@ -26,7 +28,7 @@ object CriticRatingParser extends JavaTokenParsers:
   private def review: Parser[CriticRating] =
     movieName ~ rating ~ reviewAuthor ~ reviewDate.? ^^ {
       case name ~ rate ~ author ~ date =>
-        CriticRating(name, rate, RatingCategory.Stars, Some(author), date)
+        CriticRating(name, rate._1, rate._2, Some(author), date)
     }
 
   private def reviews: Parser[List[CriticRating]] = rep(review)

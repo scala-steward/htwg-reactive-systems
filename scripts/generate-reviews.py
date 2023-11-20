@@ -28,9 +28,10 @@ for _ in range(1000):
     rating = random.choice(ratings)
     review_date = random.choice(dates)
 
+    review_category = " Stars" if random.random() > 0.2 else "%" 
     has_date = random.random() > 0.9
     if has_date:
-        example_data = f'"{movie_name}" rated {rating} Stars by "{reviewer}"'
+        example_data = f'"{movie_name}" rated {rating}{review_category} by "{reviewer}"'
     else:
-        example_data = f'"{movie_name}" rated {rating} Stars by "{reviewer}" on "{review_date.strftime("%Y-%m-%d")}"'
+        example_data = f'"{movie_name}" rated {rating}{review_category} by "{reviewer}" on "{review_date.strftime("%Y-%m-%d")}"'
     print(example_data)
