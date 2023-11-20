@@ -18,20 +18,21 @@ def random_name():
 
 # Sample data
 movie_names = ["The Shawshank Redemption", "The Godfather", "Pulp Fiction", "The Dark Knight", "Forrest Gump"]
-ratings = [1, 2, 3, 4, 5]
 dates = [date(2022, 1, 15), date(2022, 2, 20), date(2022, 3, 25), date(2022, 4, 30), date(2022, 5, 5)]
 
 # Generate example data
 for _ in range(1000):
     movie_name = random.choice(movie_names)
     reviewer = random_name()
-    rating = random.choice(ratings)
+    if random.random() > 0.2:
+        rating = f"{random.randint(1, 5)} Stars"
+    else:
+        rating = f"{random.randint(1, 100)}%"
     review_date = random.choice(dates)
 
-    review_category = " Stars" if random.random() > 0.2 else "%" 
     has_date = random.random() > 0.9
     if has_date:
-        example_data = f'"{movie_name}" rated {rating}{review_category} by "{reviewer}"'
+        example_data = f'"{movie_name}" rated {rating} by "{reviewer}"'
     else:
-        example_data = f'"{movie_name}" rated {rating}{review_category} by "{reviewer}" on "{review_date.strftime("%Y-%m-%d")}"'
+        example_data = f'"{movie_name}" rated {rating} by "{reviewer}" on "{review_date.strftime("%Y-%m-%d")}"'
     print(example_data)
