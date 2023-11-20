@@ -14,18 +14,19 @@ object CriticRatingParser extends JavaTokenParsers:
     _.toInt
   }
 
-  private def reviewAuthor: Parser[String] = stringLiteral ^^ { s =>
+  private def reviewAuthor: Parser[String] = "by" ~> stringLiteral ^^ { s =>
     s.substring(1, s.length - 1)
   }
 
-  private def reviewDate: Parser[LocalDate] = "on" ~> stringLiteral ^^ { s =>
-    LocalDate.parse(s.substring(1, s.length - 1))
-  }
+  private def reviewDate: Parser[LocalDate] =
+    "on" ~> """"\d{4}-\d{2}-\d{2}"""".r ^^ { s =>
+      LocalDate.parse(s.substring(1, s.length - 1))
+    }
 
-  def review: Parser[CriticRating] =
-    movieName ~ rating ~ "by" ~ reviewAuthor ~ reviewDate ^^ {
-      case name ~ rate ~ _ ~ author ~ date =>
-        CriticRating(name, rate, RatingCategory.Stars, Some(author), Some(date))
+  private def review: Parser[CriticRating] =
+    movieName ~ rating ~ reviewAuthor ~ reviewDate.? ^^ {
+      case name ~ rate ~ author ~ date =>
+        CriticRating(name, rate, RatingCategory.Stars, Some(author), date)
     }
 
   private def reviews: Parser[List[CriticRating]] = rep(review)
