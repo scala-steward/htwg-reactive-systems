@@ -15,6 +15,10 @@ lazy val root = project
     // DSL Parser dependencies
     libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0",
 
+    // Actor
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor-typed" % "2.8.0",
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.8.0" % Test,
+
     // Test dependencies
     libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.17" % Test,
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.17" % Test,
