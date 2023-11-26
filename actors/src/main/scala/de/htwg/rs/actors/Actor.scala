@@ -1,4 +1,4 @@
-package de.htwg.rs.tui.actors
+package de.htwg.rs.actors
 
 import akka.actor.typed.{ActorSystem, Behavior}
 import akka.actor.typed.scaladsl.Behaviors

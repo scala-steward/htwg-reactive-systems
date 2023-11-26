@@ -13,6 +13,17 @@ lazy val commonSettings = Seq(
   )
 )
 
+lazy val actors = project
+  .in(file("actors"))
+  .settings(
+    commonSettings,
+    name := "actors",
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test
+    )
+  )
+
 lazy val apiClient = project
   .in(file("apiclient"))
   .settings(
@@ -41,10 +52,8 @@ lazy val root = project
     commonSettings,
     name := "tui",
     libraryDependencies ++= Seq(
-      "com.olvind.tui" %% "tui" % "0.0.7",
-      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test
+      "com.olvind.tui" %% "tui" % "0.0.7"
     )
   )
   .dependsOn(apiClient)
-  .aggregate(apiClient, dsl)
+  .aggregate(actors, apiClient, dsl)

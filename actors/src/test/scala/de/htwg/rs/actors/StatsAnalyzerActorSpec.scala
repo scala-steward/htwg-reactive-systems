@@ -1,4 +1,4 @@
-package de.htwg.rs.tui.actors
+package de.htwg.rs.actors
 
 import akka.actor.testkit.typed.scaladsl.{ScalaTestWithActorTestKit, TestProbe}
 import org.scalatest.wordspec.AnyWordSpecLike
