@@ -37,8 +37,8 @@ jobs:
       - name: Build and Test
         run: sbt clean coverage test
 
-      - name: Generate Coverage Report
-        run: sbt coverageReport
+      - name: Aggregate Coverage Report
+        run: sbt coverageAggregate
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
