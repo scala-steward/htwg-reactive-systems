@@ -1,5 +1,4 @@
 val AkkaVersion = "2.9.0"
-val SttpVersion = "3.9.1"
 val ScalatestVersion = "3.2.17"
 
 lazy val commonSettings = Seq(
@@ -46,6 +45,18 @@ lazy val dsl = project
     )
   )
 
+lazy val streams = project
+  .in(file("streams"))
+  .settings(
+    commonSettings,
+    name := "streams",
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion
+    )
+  )
+  .dependsOn(dsl)
+
 lazy val root = project
   .in(file("."))
   .settings(
@@ -56,4 +67,4 @@ lazy val root = project
     )
   )
   .dependsOn(apiClient)
-  .aggregate(actors, apiClient, dsl)
+  .aggregate(actors, apiClient, dsl, streams)
