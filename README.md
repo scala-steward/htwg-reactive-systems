@@ -17,5 +17,5 @@ cp scripts/pre-commit.sh .git/hooks/pre-commit
 
 ### current Branch Coverage
 
-Statement Coverage: 27.08%\
-Branch Coverage: 19.05% 
+Statement Coverage: 24.64%\
+Branch Coverage: 14.81% 
