@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3.7'
 
 services:
   zoo1:
@@ -37,4 +37,14 @@ services:
     depends_on:
       - zoo1
 
-
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    hostname: kafdrop
+    container_name: kafdrop
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: kafka1:19092
+      JVM_OPTS: "-Xms32M -Xmx64M"
+    depends_on:
+      - kafka1

@@ -6,6 +6,7 @@ lazy val commonSettings = Seq(
   version := "0.1.0-SNAPSHOT",
   scalaVersion := "3.3.1",
   resolvers += "Akka library repository" at "https://repo.akka.io/maven",
+  resolvers += "confluent" at "https://packages.confluent.io/maven/",
   libraryDependencies ++= Seq(
     "org.scalatest" %% "scalatest" % ScalatestVersion % Test,
     "org.scalactic" %% "scalactic" % ScalatestVersion % Test
@@ -53,7 +54,7 @@ lazy val streams = project
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
-      "org.apache.kafka" %% "kafka" % "3.6.0"
+      "org.apache.kafka" % "kafka-clients" % "7.5.2-ce"
     )
   )
   .dependsOn(dsl)
