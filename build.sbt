@@ -41,7 +41,7 @@ lazy val dsl = project
     commonSettings,
     name := "dsl",
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0"
+      "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0"
     )
   )
 
@@ -52,7 +52,8 @@ lazy val streams = project
     name := "streams",
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
-      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion
+      "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
+      "org.apache.kafka" %% "kafka" % "3.6.0"
     )
   )
   .dependsOn(dsl)
