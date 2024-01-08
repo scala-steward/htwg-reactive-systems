@@ -6,7 +6,7 @@ import de.htwg.rs.dsl.internal.CriticRating
 import java.util.Properties
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.Random
-
+import concurrent.duration.DurationInt
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.{Flow, Sink, Source}
 import org.apache.kafka.clients.producer.{
@@ -14,6 +14,9 @@ import org.apache.kafka.clients.producer.{
   ProducerConfig,
   ProducerRecord
 }
+import scala.util.Success
+import scala.util.Failure
+import scala.concurrent.Await
 
 val KafkaTopic = "critic-ratings"
 
@@ -32,12 +35,15 @@ def initKafkaProducer(): KafkaProducer[String, String] =
 
 object ReviewStream:
   private type ParseResult = CriticRatingParser.ParseResult[List[CriticRating]]
-  private val NumberOfReviews = 100_000
+  private val NumberOfReviews = 1_000
 
   private def generateReviewSource(using random: Random): Source[String, ?] =
     Source
       .repeat(1)
-      .map(_ => CriticRatingGenerator.generate)
+      .map(_ => CriticRatingGenerator.generate) 
+   
+  
+ 
 
   private val parsingFlow: Flow[String, ParseResult, ?] =
     Flow[String].map(CriticRatingParser.parse)
@@ -51,8 +57,7 @@ object ReviewStream:
       producer: KafkaProducer[String, String]
   ): Sink[CriticRating, Future[akka.Done]] =
     Sink.foreach(event =>
-      println(s"Publishing event $event")
-      producer.send(new ProducerRecord(KafkaTopic, "key", event.toString))
+      val result = producer.send(new ProducerRecord(KafkaTopic, "key", event.toString))
     )
 
   def main(args: Array[String]): Unit =
@@ -61,12 +66,14 @@ object ReviewStream:
     implicit val random: Random = Random()
 
     val producer = initKafkaProducer()
-    generateReviewSource
+    val streamResult =generateReviewSource
       .take(NumberOfReviews)
       .via(parsingFlow)
       .via(successFlatMap)
       .runWith(publishSink(producer))
-      .onComplete(_ =>
-        producer.close()
-        reviewSystem.terminate()
-      )
+    // wait for stream to complete or 10 seconds
+    val result = Await.result(streamResult, 50.seconds)
+
+
+    println(s"Stream completed with result: $result")
+    

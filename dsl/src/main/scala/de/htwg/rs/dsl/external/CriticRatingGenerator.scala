@@ -30,4 +30,5 @@ object CriticRatingGenerator:
     s"$year-$month-$day"
 
   def generate(using random: Random): String =
+    println("Generating critic rating")
     s""""${movieTitle}" rated ${rating} by "${reviewerName}" on "${date}""""
