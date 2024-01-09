@@ -56,7 +56,7 @@ object ReviewStream:
   ): Sink[CriticRating, Future[akka.Done]] =
     Sink.foreach(event =>
       val result =
-        producer.send(new ProducerRecord(KafkaTopic, "key", event.toString))
+        producer.send(new ProducerRecord(KafkaTopic, "key", event.asJson))
     )
 
   def main(args: Array[String]): Unit =

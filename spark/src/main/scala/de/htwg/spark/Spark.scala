@@ -9,6 +9,21 @@ import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.kafka010.*
 import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
+import io.circe.parser._
+import io.circe.generic.auto._
+
+import scala.collection.mutable
+
+// Mutable Map zur Aufbewahrung der Bewertungsstatistiken für jeden Film
+val movieStats: mutable.Map[String, (Int, Int)] = mutable.Map.empty
+case class CriticRating(
+    movieName: String,
+    rating: Int,
+    category: String,
+    critic: Option[String] = None,
+    date: Option[String] = None
+)
+  
 
 object Spark:
   def main(args: Array[String]): Unit =
@@ -17,6 +32,8 @@ object Spark:
       .appName("Simple Application")
       .config("spark.master", "local")
       .getOrCreate()
+    // set log level to error
+    spark.sparkContext.setLogLevel("ERROR")
     val testFile =
       spark.read.textFile("/home/tim/Downloads/logiJoy.config.yml").cache()
     val numA = testFile.filter(line => line.contains("a")).count()
@@ -39,14 +56,47 @@ object Spark:
       PreferConsistent,
       Subscribe[String, String](topics, kafkaParams)
     )
-    println("oooooooooooooooooooo")
     stream.foreachRDD { rdd =>
-      val messages = rdd.map(_.value)
-      messages.foreach(println)
+      rdd.foreach { record =>
+        val value = record.value()
+        val result = decode[CriticRating](value)
+
+        result match {
+          case Right(criticRating) =>
+            processCriticRating(criticRating)
+          case Left(error) =>
+            println(s"Failed to parse JSON: $error")
+        }
+      }
     }
-    println("oooooooooooooooooooo")
 
     streamingContext.start()
     streamingContext.awaitTermination()
 
     spark.stop()
+    println("Spark stopped")
+
+
+def processCriticRating(criticRating: CriticRating): Unit = {
+  // Extrahiere Informationen aus der Bewertung
+  val movieName = criticRating.movieName
+  val rating = criticRating.rating
+
+  // Aktualisiere die Statistiken für den Film
+  val (totalRatings, totalRatingSum) = movieStats.getOrElse(movieName, (0, 0))
+  val newTotalRatings = totalRatings + 1
+  val newTotalRatingSum = totalRatingSum + rating
+  movieStats.update(movieName, (newTotalRatings, newTotalRatingSum))
+
+  // Erstelle ein Ranking der besten Filme basierend auf durchschnittlichen Bewertungen
+  val topMovies = movieStats.toSeq
+    .sortBy { case (_, (total, sum)) => if (total > 0) sum.toDouble / total else 0.0 }
+    .reverse
+
+  // Drucke das aktuelle Ranking der besten Filme
+  println("Current Ranking of Top Movies:")
+  topMovies.foreach { case (movie, (total, sum)) =>
+    val averageRating = if (total > 0) sum.toDouble / total else 0.0
+    println(s"Movie: $movie, Total Ratings: $total, Average Rating: $averageRating")
+  }
+}    

@@ -42,7 +42,9 @@ lazy val dsl = project
     commonSettings,
     name := "dsl",
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0"
+      "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0",
+      "io.circe" %% "circe-parser" % "0.14.6",
+      "io.circe" %% "circe-generic" % "0.14.6",
     )
   )
 
@@ -69,11 +71,14 @@ lazy val spark = project
       "org.apache.spark" %% "spark-sql" % "3.5.0" cross CrossVersion.for3Use2_13,
       "org.apache.spark" %% "spark-streaming" % "3.5.0" cross CrossVersion.for3Use2_13,
       "org.scala-lang.modules" %% "scala-xml" % "2.2.0" cross CrossVersion.for3Use2_13,
-      "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.5.0" cross CrossVersion.for3Use2_13
+      "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.5.0" cross CrossVersion.for3Use2_13,
+      "io.circe" %% "circe-parser" % "0.14.6",
+      "io.circe" %% "circe-generic" % "0.14.6",
     ),
     excludeDependencies ++= Seq(
       ExclusionRule("org.scala-lang.modules", "scala-xml_3"),
-      ExclusionRule("org.scala-lang.modules", "scala-parser-combinators_2.13")
+      ExclusionRule("org.scala-lang.modules", "scala-parser-combinators_2.13"),
+
     )
   )
   .dependsOn(dsl)

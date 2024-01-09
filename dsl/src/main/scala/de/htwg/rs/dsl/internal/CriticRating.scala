@@ -1,6 +1,8 @@
 package de.htwg.rs.dsl.internal
 
 import java.time.LocalDate
+import io.circe._
+import io.circe.generic.semiauto._
 
 /** Movie represents a movie. */
 case class Movie(title: String):
@@ -23,6 +25,15 @@ case class CriticRating(
   def on(date: String): CriticRating =
     val localDate = LocalDate.parse(date)
     copy(date = Some(localDate))
+
+  def asJson: String =
+    s"""{
+       |  "movieName": "$movieName",
+       |  "rating": $rating,
+       |  "category": "${category.toString.toLowerCase}", 
+       |  "critic": "${critic.getOrElse("")}",
+       |  "date": "${date.getOrElse("")}"
+       |}""".stripMargin  
 
 enum RatingCategory:
   case Stars, %
