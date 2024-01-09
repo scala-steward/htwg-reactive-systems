@@ -1,4 +1,4 @@
-val AkkaVersion = "2.9.0"
+val AkkaVersion = "2.9.1"
 val ScalatestVersion = "3.2.17"
 
 lazy val commonSettings = Seq(
@@ -42,7 +42,7 @@ lazy val dsl = project
     commonSettings,
     name := "dsl",
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0"
+      "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0"
     )
   )
 
@@ -54,9 +54,7 @@ lazy val streams = project
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-stream" % AkkaVersion,
       "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
-      "org.apache.kafka" % "kafka-clients" % "7.5.2-ce",
-     /*  "org.slf4j" % "slf4j-api" % "2.0.10",
-      "ch.qos.logback" % "logback-classic" % "1.4.14" */
+      "org.apache.kafka" % "kafka-clients" % "7.5.3-ce"
     )
   )
   .dependsOn(dsl)
@@ -71,8 +69,7 @@ lazy val spark = project
       "org.apache.spark" %% "spark-sql" % "3.5.0" cross CrossVersion.for3Use2_13,
       "org.apache.spark" %% "spark-streaming" % "3.5.0" cross CrossVersion.for3Use2_13,
       "org.scala-lang.modules" %% "scala-xml" % "2.2.0" cross CrossVersion.for3Use2_13,
-      "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.5.0" cross CrossVersion.for3Use2_13,
-
+      "org.apache.spark" %% "spark-streaming-kafka-0-10" % "3.5.0" cross CrossVersion.for3Use2_13
     ),
     excludeDependencies ++= Seq(
       ExclusionRule("org.scala-lang.modules", "scala-xml_3"),
@@ -80,14 +77,15 @@ lazy val spark = project
     )
   )
   .dependsOn(dsl)
+
 lazy val root = project
   .in(file("."))
   .settings(
     commonSettings,
     name := "tui",
     libraryDependencies ++= Seq(
-      "com.olvind.tui" %% "tui" % "0.0.7" ,
+      "com.olvind.tui" %% "tui" % "0.0.7"
     )
   )
   .dependsOn(apiClient)
-  .aggregate(actors, apiClient, dsl, streams)
+  .aggregate(actors, apiClient, dsl, streams, spark)
