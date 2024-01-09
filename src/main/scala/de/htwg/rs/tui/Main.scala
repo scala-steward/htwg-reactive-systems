@@ -1,8 +1,8 @@
 package de.htwg.rs.tui
 
-import de.htwg.rs.apiclient.{ApiClient, ChangeType, TargetType}
 import de.htwg.rs.tui.config.Config
 import de.htwg.rs.tui.controller.App
+import de.htwg.rs.tui.model.apiclient.{ApiClient, ChangeType, TargetType}
 import de.htwg.rs.tui.model.utils.getCountChangesForEveryService
 import de.htwg.rs.tui.view.ui
 

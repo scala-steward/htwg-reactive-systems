@@ -24,18 +24,6 @@ lazy val actors = project
     )
   )
 
-lazy val apiClient = project
-  .in(file("apiclient"))
-  .settings(
-    commonSettings,
-    name := "apiclient",
-    libraryDependencies ++= Seq(
-      "com.lihaoyi" % "ujson_3" % "3.1.3",
-      "org.scalaj" % "scalaj-http_2.13" % "2.4.2",
-      "com.squareup.okhttp3" % "mockwebserver" % "4.12.0" % Test
-    )
-  )
-
 lazy val dsl = project
   .in(file("dsl"))
   .settings(
@@ -89,8 +77,10 @@ lazy val root = project
     commonSettings,
     name := "tui",
     libraryDependencies ++= Seq(
-      "com.olvind.tui" %% "tui" % "0.0.7"
+      "com.olvind.tui" %% "tui" % "0.0.7",
+      "com.lihaoyi" % "ujson_3" % "3.1.3",
+      "org.scalaj" % "scalaj-http_2.13" % "2.4.2",
+      "com.squareup.okhttp3" % "mockwebserver" % "4.12.0" % Test
     )
   )
-  .dependsOn(apiClient)
-  .aggregate(actors, apiClient, dsl, streams, spark)
+  .aggregate(actors, dsl, streams, spark)

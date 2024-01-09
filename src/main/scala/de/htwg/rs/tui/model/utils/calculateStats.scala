@@ -1,6 +1,6 @@
 package de.htwg.rs.tui.model.utils
 
-import de.htwg.rs.apiclient.*
+import de.htwg.rs.tui.model.apiclient.*
 
 import scala.collection.immutable.Map
 import scala.collection.mutable

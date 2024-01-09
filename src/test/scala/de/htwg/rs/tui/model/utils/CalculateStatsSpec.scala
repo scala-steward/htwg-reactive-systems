@@ -1,7 +1,7 @@
 package de.htwg.rs.tui.model.utils
 
-import de.htwg.rs.apiclient
-import de.htwg.rs.apiclient.*
+import de.htwg.rs.tui.model
+import de.htwg.rs.tui.model.apiclient.{Country, StreamingProvider}
 import de.htwg.rs.tui.model.utils.{
   getAllStreamingProviderAsList,
   getPaymentModelsSpreadFromStreamingProvider,
@@ -19,7 +19,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
 
   "getSpreadStreamingProvider" should "return a map of streaming providers and their percentage of countries that support them" in {
     val countries = List(
-      apiclient.Country(
+      Country(
         name = "Country A",
         code = "de",
         servicesRaw = ujson.Obj(
@@ -48,19 +48,19 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
 
   it should "return a map with a single streaming provider when given an list of countries with only one streaming provider" in {
     val countries = List(
-      apiclient.Country(
+      model.apiclient.Country(
         "Country A",
         "de",
         ujson.Obj(),
         servicesAsList = List("Netflix")
       ),
-      apiclient.Country(
+      model.apiclient.Country(
         "Country B",
         "pl",
         ujson.Obj(),
         servicesAsList = List("Netflix")
       ),
-      apiclient.Country(
+      model.apiclient.Country(
         "Country C",
         "af",
         ujson.Obj(),
@@ -75,7 +75,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
 
   it should "return a map with a single streaming provider when given an list of countries with only one streaming provider and one country" in {
     val countries = List(
-      apiclient.Country(
+      model.apiclient.Country(
         "Country A",
         "de",
         ujson.Obj(),
@@ -90,7 +90,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
 
   "getAllStreamingProviderAsList" should "return a list of all streaming providers in the given countries" in {
     val countries = List(
-      apiclient.Country(
+      model.apiclient.Country(
         name = "Country A",
         code = "de",
         servicesRaw = ujson.Obj(
@@ -109,7 +109,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
         ),
         servicesAsList = List("Netflix", "Hulu", "Disney+")
       ),
-      apiclient.Country(
+      model.apiclient.Country(
         name = "Country B",
         code = "pl",
         servicesRaw = ujson.Obj(
@@ -128,7 +128,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
         ),
         servicesAsList = List("Netflix", "Hulu", "Disney+")
       ),
-      apiclient.Country(
+      model.apiclient.Country(
         name = "Country C",
         code = "af",
         servicesRaw = ujson.Obj(

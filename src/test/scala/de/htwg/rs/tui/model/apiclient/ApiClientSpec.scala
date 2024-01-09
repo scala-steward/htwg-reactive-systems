@@ -1,4 +1,4 @@
-package de.htwg.rs.apiclient
+package de.htwg.rs.tui.model.apiclient
 
 import scala.io.Source
 

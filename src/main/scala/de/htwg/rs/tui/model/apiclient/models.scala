@@ -1,4 +1,4 @@
-package de.htwg.rs.apiclient
+package de.htwg.rs.tui.model.apiclient
 
 case class Country(
     name: String,

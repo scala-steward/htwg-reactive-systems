@@ -1,4 +1,4 @@
-package de.htwg.rs.tui.model.config
+package de.htwg.rs.tui.config
 
 import de.htwg.rs.tui.config.Config
 

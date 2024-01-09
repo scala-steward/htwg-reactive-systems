@@ -1,7 +1,7 @@
 package de.htwg.rs.tui.controller
 
-import de.htwg.rs.apiclient.Country
 import de.htwg.rs.tui.model.TabsState
+import de.htwg.rs.tui.model.apiclient.Country
 import de.htwg.rs.tui.model.utils.{
   getPaymentModelsSpreadFromStreamingProvider,
   getSpreadStreamingProvider,
