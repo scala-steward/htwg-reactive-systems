@@ -1,5 +1,9 @@
 package de.htwg.rs.spark
 
+import scala.collection.mutable
+
+import io.circe.generic.auto.*
+import io.circe.parser.*
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.TaskContext
@@ -9,10 +13,6 @@ import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.kafka010.*
 import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
-import io.circe.parser._
-import io.circe.generic.auto._
-
-import scala.collection.mutable
 
 // Mutable Map zur Aufbewahrung der Bewertungsstatistiken für jeden Film
 val movieStats: mutable.Map[String, (Int, Int)] = mutable.Map.empty
@@ -23,7 +23,6 @@ case class CriticRating(
     critic: Option[String] = None,
     date: Option[String] = None
 )
-  
 
 object Spark:
   def main(args: Array[String]): Unit =
@@ -61,12 +60,11 @@ object Spark:
         val value = record.value()
         val result = decode[CriticRating](value)
 
-        result match {
+        result match
           case Right(criticRating) =>
             processCriticRating(criticRating)
           case Left(error) =>
             println(s"Failed to parse JSON: $error")
-        }
       }
     }
 
@@ -76,15 +74,16 @@ object Spark:
     spark.stop()
     println("Spark stopped")
 
-
-  def processCriticRating(criticRating: CriticRating,movieStats: mutable.Map[String, (Int, Int)]=movieStats): Unit = {
+  def processCriticRating(
+      criticRating: CriticRating,
+      movieStats: mutable.Map[String, (Int, Int)] = movieStats
+  ): Unit =
     // Extrahiere Informationen aus der Bewertung
     val movieName = criticRating.movieName
-    
-    val rating = 
-    if (criticRating.category == "stars") criticRating.rating * 20
-    else criticRating.rating
 
+    val rating =
+      if criticRating.category == "stars" then criticRating.rating * 20
+      else criticRating.rating
 
     // Aktualisiere die Statistiken für den Film
     val (totalRatings, totalRatingSum) = movieStats.getOrElse(movieName, (0, 0))
@@ -92,14 +91,15 @@ object Spark:
     val newTotalRatingSum = totalRatingSum + rating
     movieStats.update(movieName, (newTotalRatings, newTotalRatingSum))
     // Erstelle ein Ranking der besten Filme basierend auf durchschnittlichen Bewertungen
-    val topMovies = movieStats.toSeq
-      .sortBy { case (_, (total, sum)) => if (total > 0) sum.toDouble / total else 0.0 }
-      .reverse
-    
+    val topMovies = movieStats.toSeq.sortBy { case (_, (total, sum)) =>
+      if total > 0 then sum.toDouble / total else 0.0
+    }.reverse
+
     // Drucke das aktuelle Ranking der besten Filme
     println("Current Ranking of Top Movies:")
     topMovies.foreach { case (movie, (total, sum)) =>
-      val averageRating = if (total > 0) sum.toDouble / total else 0.0
-      println(s"Movie: $movie, Total Ratings: $total, Average Rating: $averageRating %")
-    } 
-  }    
+      val averageRating = if total > 0 then sum.toDouble / total else 0.0
+      println(
+        s"Movie: $movie, Total Ratings: $total, Average Rating: $averageRating %"
+      )
+    }

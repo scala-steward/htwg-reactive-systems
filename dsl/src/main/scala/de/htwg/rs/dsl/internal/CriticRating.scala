@@ -1,8 +1,9 @@
 package de.htwg.rs.dsl.internal
 
 import java.time.LocalDate
-import io.circe._
-import io.circe.generic.semiauto._
+
+import io.circe.*
+import io.circe.generic.semiauto.*
 
 /** Movie represents a movie. */
 case class Movie(title: String):
@@ -33,7 +34,7 @@ case class CriticRating(
        |  "category": "${category.toString.toLowerCase}", 
        |  "critic": "${critic.getOrElse("")}",
        |  "date": "${date.getOrElse("")}"
-       |}""".stripMargin  
+       |}""".stripMargin
 
 enum RatingCategory:
   case Stars, %
