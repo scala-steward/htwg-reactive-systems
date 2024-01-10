@@ -77,26 +77,29 @@ object Spark:
     println("Spark stopped")
 
 
-def processCriticRating(criticRating: CriticRating): Unit = {
-  // Extrahiere Informationen aus der Bewertung
-  val movieName = criticRating.movieName
-  val rating = criticRating.rating
+  def processCriticRating(criticRating: CriticRating,movieStats: mutable.Map[String, (Int, Int)]=movieStats): Unit = {
+    // Extrahiere Informationen aus der Bewertung
+    val movieName = criticRating.movieName
+    
+    val rating = 
+    if (criticRating.category == "stars") criticRating.rating * 20
+    else criticRating.rating
 
-  // Aktualisiere die Statistiken für den Film
-  val (totalRatings, totalRatingSum) = movieStats.getOrElse(movieName, (0, 0))
-  val newTotalRatings = totalRatings + 1
-  val newTotalRatingSum = totalRatingSum + rating
-  movieStats.update(movieName, (newTotalRatings, newTotalRatingSum))
 
-  // Erstelle ein Ranking der besten Filme basierend auf durchschnittlichen Bewertungen
-  val topMovies = movieStats.toSeq
-    .sortBy { case (_, (total, sum)) => if (total > 0) sum.toDouble / total else 0.0 }
-    .reverse
-
-  // Drucke das aktuelle Ranking der besten Filme
-  println("Current Ranking of Top Movies:")
-  topMovies.foreach { case (movie, (total, sum)) =>
-    val averageRating = if (total > 0) sum.toDouble / total else 0.0
-    println(s"Movie: $movie, Total Ratings: $total, Average Rating: $averageRating")
-  }
-}    
+    // Aktualisiere die Statistiken für den Film
+    val (totalRatings, totalRatingSum) = movieStats.getOrElse(movieName, (0, 0))
+    val newTotalRatings = totalRatings + 1
+    val newTotalRatingSum = totalRatingSum + rating
+    movieStats.update(movieName, (newTotalRatings, newTotalRatingSum))
+    // Erstelle ein Ranking der besten Filme basierend auf durchschnittlichen Bewertungen
+    val topMovies = movieStats.toSeq
+      .sortBy { case (_, (total, sum)) => if (total > 0) sum.toDouble / total else 0.0 }
+      .reverse
+    
+    // Drucke das aktuelle Ranking der besten Filme
+    println("Current Ranking of Top Movies:")
+    topMovies.foreach { case (movie, (total, sum)) =>
+      val averageRating = if (total > 0) sum.toDouble / total else 0.0
+      println(s"Movie: $movie, Total Ratings: $total, Average Rating: $averageRating %")
+    } 
+  }    
