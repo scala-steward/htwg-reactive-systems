@@ -3,8 +3,8 @@ package de.htwg.rs.tui.model.utils
 import de.htwg.rs.tui.model
 import de.htwg.rs.tui.model.apiclient.{Country, StreamingProvider}
 import de.htwg.rs.tui.model.utils.{
+  calculatePaymentModelSupportPercentage,
   getAllStreamingProviderAsList,
-  getPaymentModelsSpreadFromStreamingProvider,
   getSpreadStreamingProvider
 }
 
@@ -156,7 +156,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
     result should contain theSameElementsAs expected
   }
 
-  "getPaymentModelsSpreadFromStreamingProvider" should "return a map of streaming provider streaming type and percentage of countries that support it" in {
+  "calculatePaymentModelSupportPercentage" should "return a map of streaming provider streaming type and percentage of countries that support it" in {
     val streamingProviders = List(
       StreamingProvider(
         "Netflix",
@@ -183,7 +183,7 @@ class CalculateStatsSpec extends AnyFlatSpec with should.Matchers:
       "buy" -> 66
     )
 
-    val result = getPaymentModelsSpreadFromStreamingProvider(streamingProviders)
+    val result = calculatePaymentModelSupportPercentage(streamingProviders)
 
     result shouldEqual expected
   }

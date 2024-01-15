@@ -54,31 +54,24 @@ def getStreamingProvider(countries: List[Country]): List[StreamingProvider] =
   )
   return streamingProvider
 
-  // returns map of streaming provider streaming type and percentage of countries that support it
-  // for example: Map("buy" -> 50, "subscripe" -> 90)
-  // one streaming provider can support multiple streaming types
-  // you can get the Array of streaming providers from getStreamingProvider()
-def getPaymentModelsSpreadFromStreamingProvider(
-    streamingProvider: List[StreamingProvider]
+/** Computes a map of payment models and the percentage of streaming providers
+  * that support it
+  */
+def calculatePaymentModelSupportPercentage(
+    streamingProviders: List[StreamingProvider]
 ): Map[String, Int] =
-  // create empty Key VAlue storage of streaming providertype and percentage
-  val streamingProviderSupportedStreamingTypesCount = mutable.Map[String, Int]()
-  streamingProvider.foreach((streamingProvider) =>
-    streamingProvider.supportedStreamingTypes.foreach((key, value) =>
-      if value then
-        if !streamingProviderSupportedStreamingTypesCount.contains(key) then
-          streamingProviderSupportedStreamingTypesCount(key) = 1
-        else streamingProviderSupportedStreamingTypesCount(key) += 1
-    )
-  )
-  val streamingProviderSupportedStreamingTypesPercentage =
-    mutable.Map[String, Int]()
-  streamingProviderSupportedStreamingTypesCount.foreach((key, value) =>
-    val percentage = (value * 100) / streamingProvider.length
-    streamingProviderSupportedStreamingTypesPercentage(key) = percentage
-  )
-  return Map.from(streamingProviderSupportedStreamingTypesPercentage)
+  val totalProviders = streamingProviders.length
+  streamingProviders
+    .flatMap(_.supportedStreamingTypes)
+    .collect { case (paymentModel, isSupported) if isSupported => paymentModel }
+    .groupMapReduce(identity)(_ => 1)(_ + _)
+    .map { case (paymentModel, availableProviders) =>
+      paymentModel -> (availableProviders * 100) / totalProviders
+    }
 
+/** Computes a map of streaming types and the percentage of streaming providers
+  * that support it
+  */
 def getCountChanges(
     client: ApiClient,
     change_type: ChangeType,
@@ -118,7 +111,9 @@ def getCountChanges(
     else Success(changesCount)
   else Failure(new Error("Error getting changes from api"))
 
-// this function calls the api for every streaming service and returns the changes as Map
+/** Computes a map of streaming providers and the number of changes for a
+  * specific change type
+  */
 def getCountChangesForEveryService(
     client: ApiClient,
     change_type: ChangeType,

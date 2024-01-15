@@ -3,13 +3,12 @@ package de.htwg.rs.tui.controller
 import de.htwg.rs.tui.model.TabsState
 import de.htwg.rs.tui.model.apiclient.Country
 import de.htwg.rs.tui.model.utils.{
-  getPaymentModelsSpreadFromStreamingProvider,
+  calculatePaymentModelSupportPercentage,
   getSpreadStreamingProvider,
   getStreamingProvider
 }
 
 import scala.collection.immutable.Map
-import scala.collection.mutable
 import scala.util.Try
 
 import tui.*
@@ -26,18 +25,15 @@ case class App(
     countRemovedChangesProvider: Map[String, Int]
 ):
 
-  /*   def onUp(): Unit =
-    this.countries.previous()
-
-  def onDown(): Unit =
-    this.countries.next() */
-
+  /** Switch to the next tab. */
   def onRight(): Unit =
     this.tabs.next()
 
+  /** Switch to the previous tab. */
   def onLeft(): Unit =
     this.tabs.previous()
 
+  /** React to a key press. */
   def onKey(c: Char): Unit =
     c match
       case 'q' => this.shouldQuit = true
@@ -57,19 +53,15 @@ object App:
       tabs = TabsState(
         List("List of Movies", "Stats Streaming Provider", "Stats Changes")
       ),
-      streamingProviderSpread =
-        if countries.isSuccess then getSpreadStreamingProvider(countries.get)
-        else Map[String, Int]("Error" -> 100),
-      streamingProviderPaymentModelSpread = if countries.isSuccess then
-        val countriesRight = countries.get
-        val streamingProvider = getStreamingProvider(countriesRight)
-        getPaymentModelsSpreadFromStreamingProvider(streamingProvider)
-      else Map[String, Int]("Error" -> 100),
-      countNewChangesProvider =
-        if countChangesProvider.isSuccess then countChangesProvider.get
-        else Map[String, Int]("Error" -> 100),
-      countRemovedChangesProvider =
-        if countRemovedChangesProvider.isSuccess then
-          countRemovedChangesProvider.get
-        else Map[String, Int]("Error" -> 100)
+      streamingProviderSpread = countries
+        .map(getSpreadStreamingProvider)
+        .getOrElse(Map[String, Int]("Error" -> 100)),
+      streamingProviderPaymentModelSpread = countries
+        .map(getStreamingProvider)
+        .map(calculatePaymentModelSupportPercentage)
+        .getOrElse(Map[String, Int]("Error" -> 100)),
+      countNewChangesProvider = countChangesProvider
+        .getOrElse(Map[String, Int]("Error" -> 100)),
+      countRemovedChangesProvider = countRemovedChangesProvider
+        .getOrElse(Map[String, Int]("Error" -> 100))
     )
